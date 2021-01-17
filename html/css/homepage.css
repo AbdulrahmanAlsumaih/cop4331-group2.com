@@ -1,0 +1,21 @@
+.background {
+  background-color: rgb(49, 49, 49);
+}
+
+.text {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  margin: auto;
+}
+
+.title-text {
+  color: slategrey;
+  text-align: center;
+  font-size: 60px;
+}
+
+.login-text {
+  color: white;
+  font-size: 20px;
+}
