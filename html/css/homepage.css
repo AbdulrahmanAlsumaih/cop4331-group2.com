@@ -19,3 +19,8 @@
   color: white;
   font-size: 20px;
 }
+
+.pad {
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
