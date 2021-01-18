@@ -7,12 +7,21 @@
   text-align: center;
   font-size: 30px;
   margin: auto;
+  font-family: "Raleway", sans-serif;
 }
 
 .title-text {
-  color: slategrey;
+  color: steelblue;
   text-align: center;
   font-size: 60px;
+  font-family: "Raleway", sans-serif;
+}
+
+.subtitle-text {
+  color: rgb(47, 90, 124);
+  text-align: center;
+  font-size: 17px;
+  font-family: "Raleway", sans-serif;
 }
 
 .login-text {
@@ -27,4 +36,8 @@
 
 .bottom {
   padding-bottom: 50px;
+}
+
+.jumbotron {
+  background-color: rgb(255, 255, 255);
 }
