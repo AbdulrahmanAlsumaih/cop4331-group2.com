@@ -25,33 +25,35 @@
     <div class="container pad">
       <div class="row justify-content-center">
         <div class="col-sm-12">
-          <p class="text">Please log in or create an account</p>
+          <p class="text">Please Log In</p>
         </div>
       </div>
     </div>
 
-    <div class="container pad">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="form-group">
-            <label class="login-text" for="username">Username:</label>
-            <input type="text" class="form-control" name="username" id="username" placeholder="Enter username">
-          </div>
-          <div class="form-group">
-            <label class="login-text" for="pwd">Password:</label>
-            <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter password">
+    <form action="Login.php" method="POST">
+      <div class="container pad">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="form-group">
+              <label class="login-text" for="email">Email:</label>
+              <input type="text" class="form-control" name="email"  placeholder="Enter email address">
+            </div>
+            <div class="form-group">
+              <label class="login-text" for="pwd">Password:</label>
+              <input type="password" class="form-control" name="pass"  placeholder="Enter password">
+            </div>
           </div>
         </div>
+        <div class="row justify-content-center pad-top">
+          <button type="submit" class="btn btn-primary btn-lg">Log In</button>
+        </div>
       </div>
-    </div>
+    </form>
 
-    <div class="container pad">
-      <div class="row justify-content-center pad">
-        <button type="submit" class="btn btn-primary btn-lg">Log In</button>
-      </div>
+    <div class="container">
       <div class="row justify-content-center">
         <a href="signup.html">
-          <button type="submit" class="btn btn-primary btn-lg">Create New Account</button>
+          <button type="button" class="btn btn-primary btn-lg">Create New Account</button>
         </a>
       </div>
     </div>
