@@ -7,12 +7,21 @@
   text-align: center;
   font-size: 30px;
   margin: auto;
+  font-family: "Raleway", sans-serif;
 }
 
 .title-text {
-  color: slategrey;
+  color: steelblue;
   text-align: center;
   font-size: 60px;
+  font-family: "Raleway", sans-serif;
+}
+
+.subtitle-text {
+  color: rgb(47, 90, 124);
+  text-align: center;
+  font-size: 17px;
+  font-family: "Raleway", sans-serif;
 }
 
 .login-text {
@@ -25,6 +34,39 @@
   padding-top: 25px;
 }
 
+.pad-top {
+  padding-top: 25px;
+}
+
 .bottom {
   padding-bottom: 50px;
+}
+
+.jumbotron {
+  background-color: rgb(255, 255, 255);
+}
+
+table {
+  border-radius: 6px; 
+  background-color: white;
+  width: 80%;
+  table-layout: fixed;
+
+}
+
+.table-title-text{
+  color: white;
+}
+
+tr:first-child {
+  background-color: #FF0000;
+}
+
+tr:nth-child(odd) {
+  background-color: #e3e3e3;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
 }
