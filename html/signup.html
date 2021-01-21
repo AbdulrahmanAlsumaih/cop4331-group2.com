@@ -33,11 +33,11 @@
             <div class="form-group">
               <div class="form-group">
               <label class="login-text" for="pwd">First Name:</label>
-              <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter first name">
+              <input type="text" class="form-control" name="first" id="first" placeholder="Enter first name">
               </div>
               <div class="form-group">
               <label class="login-text" for="pwd">Last Name:</label>
-              <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter last name">
+              <input type="text" class="form-control" name="last" id="last" placeholder="Enter last name">
               </div>
               <label class="login-text" for="username">Username:</label>
               <input type="text" class="form-control" name="username" id="username" placeholder="Enter username">
@@ -51,7 +51,12 @@
         <div class='bottom'>
           <div class="row justify-content-center">
             <a href="index.html">
-              <button type="submit" class="btn btn-primary btn-lg">Register</button>
+              <button onclick="myFunction()" type="submit" class="btn btn-primary btn-lg">Register</button>
+              <script>
+                function myFunction() {
+                  document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+                }
+                </script>
             </a>
           </div>
         </div>
