@@ -45,3 +45,28 @@
 .jumbotron {
   background-color: rgb(255, 255, 255);
 }
+
+table {
+  border-radius: 6px; 
+  background-color: white;
+  width: 80%;
+  table-layout: fixed;
+
+}
+
+.table-title-text{
+  color: white;
+}
+
+tr:first-child {
+  background-color: #FF0000;
+}
+
+tr:nth-child(odd) {
+  background-color: #e3e3e3;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
