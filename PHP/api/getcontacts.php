@@ -22,33 +22,40 @@
 	else
 	{
 		// Use the page number to determine which records to get
-		$lastvalue = inData['pagenumber'] * 5
+		$lastvalue = $inData['pagenumber'] * 5;
+		$firstvalue = $lastvalue - 5;
 		
 		// Retrieve the data from the db
-		$sql = "select num,firstname,lastname,email,phone,date from contacts where id = " . $_SESSION['id'] . "limit " . ($lastvalue-5) . ", " . $lastvalue;
-		if( $result = $conn->query($sql) != TRUE )
+		$sql = "select num,firstname,lastname,email,phone,date from contacts where id = " . $_SESSION['id'] . " limit " . $firstvalue . "," . $lastvalue . ";";
+		
+		$result = $conn->query($sql);
+		
+		if( $result == NULL )
 		{
-			returnWithError( $conn->error, -1 );
+			returnWithError($conn->error, -1 );
+			die();
 		}
-		$conn->close();
 		
 		// Make sure data was returned
 		if ($result->num_rows > 0) {
 			
 			// Create the big array
-			$contacts = "{"
+			$contacts = "{";
 			
 			// Simple variable for iteration
-			$i = 0
+			$i = 0;
 			
 			// Loop through the results
 			while($row = $result->fetch_assoc()) {
 				
 				// Create a contact
-				$contact = "{firstname:'" . $row['firstname'] . "', lastname:'" . $row['lastname'] . "', email:'" . $row['email'] . "', phone:" . $row['phone'] . ", date:" . $row['date']"}";
+				$contact = "{firstname:'" . $row['firstname'] . "', lastname:'" . $row['lastname'] . "', email:'" . $row['email'] . "', phone:" . $row['phone'] . ", date:" . $row['date'] . ", num:" . $row['num'] . "}";
 				
 				// Add it to the big array
-				$contacts = $contacts . "contact" . $i . ":'" . $contact . "'," 
+				$contacts = $contacts . "contact" . $i . ":'" . $contact . "'," ;
+				
+				// Increment the contact number
+				$i += 1;
 			}
 			
 			// Remove the trailing comma 
@@ -59,12 +66,15 @@
 			
 			// Return with the data
 			sendResultInfoAsJson($contacts);
+			$conn->close();
 		}
 		
 		// If nothing found, return an error
 		else {
-			returnWithError("No results found", 0)
+			$conn->close();
+			returnWithError("No results found", 0);
 		}
+	}
 	
 	function getRequestInfo()
 	{
