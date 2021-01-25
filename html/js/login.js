@@ -19,7 +19,7 @@ function doLogin()
 
 //	let jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
 	let jsonPayload = '{"email" : "' + login + '", "password" : "' + password + '"}';
-	let url = urlBase + '/Login.' + extension;
+	let url = urlBase + '/login.' + extension;
 
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);
