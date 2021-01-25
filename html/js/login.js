@@ -1,4 +1,4 @@
-let urlBase = 'http://www.cop4331-group2.com';
+let urlBase = 'http://www.cop4331-group2.com/api';
 let extension = 'php';
 
 let userId = 0;
@@ -19,8 +19,8 @@ function doLogin()
 	document.getElementById("loginResult").innerHTML = "";
 
 	// Creating the jsonPayload
-	let jsonPayload = '{"email" : "' + login + '", "pass" : "' + password + '"}';
-	let url = urlBase + '/Login.' + extension;
+	let jsonPayload = '{"email" : "' + login + '", "pass" : "' + hash + '"}';
+	let url = urlBase + '/login.' + extension;
 
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
