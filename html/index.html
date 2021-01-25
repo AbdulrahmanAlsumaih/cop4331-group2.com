@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/login.js"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/homepage.css">
@@ -30,27 +33,26 @@
       </div>
     </div>
 
-    <form action="Login.php" method="POST">
-      <div class="container pad">
-        <div class="row justify-content-center">
-          <div class="col-md-8">
-            <div class="form-group">
-              <label class="login-text" for="email">Email:</label>
-              <input type="text" class="form-control" name="email"  placeholder="Enter email address">
-            </div>
-            <div class="form-group">
-              <label class="login-text" for="pass">Password:</label>
-              <input type="password" class="form-control" name="pass"  placeholder="Enter password">
-            </div>
+    <div id="loginDiv" class="container pad">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="form-group">
+            <label class="login-text" for="email">Email:</label>
+            <input type="text" class="form-control" id="email"  placeholder="Enter email address">
+          </div>
+          <div class="form-group">
+            <label class="login-text" for="password">Password:</label>
+            <input type="password" class="form-control" id="password"  placeholder="Enter password">
           </div>
         </div>
-        <div class="row justify-content-center pad-top">
-          <a href="home.html">
-            <button type="submit" class="btn btn-primary btn-lg">Log In</button>
-          </a>
-        </div>
       </div>
-    </form>
+      <div class="row justify-content-center pad-top">
+        <button type="submit" class="btn btn-primary btn-lg" id="loginButton" onclick="doLogin();">Log In</button>
+      </div>
+      <div class="row justify-content-center pad-top">
+        <span class="login-text" id="loginResult"></span>
+      </div>
+    </div>
 
     <div class="container">
       <div class="row justify-content-center">

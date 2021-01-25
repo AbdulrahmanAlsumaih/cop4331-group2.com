@@ -1,12 +1,19 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <script>
-
-    </script>
+    
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() 
+      {
+        readCookie();
+      }, false);
+    </script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -22,8 +29,13 @@
 
     <div class="container pad">
       <div class="row justify-content-center">
-        <div class="col-sm-12">
+        <div class="col-sm-3">
           <p class="text">Contacts</p>
+        </div>
+        <div id="loggedIn">
+          <span id="userName"></span>
+          <br>
+          <button type="submit" id="logout" onclick="doLogout();">Log Out</button>
         </div>
       </div>
     </div>
