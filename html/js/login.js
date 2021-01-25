@@ -8,42 +8,49 @@ let lastName = "";
 function doLogin()
 {
 	userId = 0;
-	firstName = "";
-	lastName = "";
+	// firstName = "";
+	// lastName = "";
 	
-	let login = document.getElementById("email").value;
-	let password = document.getElementById("password").value;
-//	let hash = md5( password );
+	// Getting data from the html IDs
+	let login = document.getElementById("loginEmail").value;
+	let password = document.getElementById("loginPassword").value;
+	let hash = md5(password); // Hashing password
 	
 	document.getElementById("loginResult").innerHTML = "";
 
-//	let jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
-	let jsonPayload = '{"email" : "' + login + '", "password" : "' + password + '"}';
+	// Creating the jsonPayload
+	let jsonPayload = '{"email" : "' + login + '", "pass" : "' + hash + '"}';
 	let url = urlBase + '/login.' + extension;
 
 	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, false);
+	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		xhr.send(jsonPayload);
-		
-		let jsonObject = JSON.parse( xhr.responseText );
-		
-		userId = jsonObject.id;
-		
-		if( userId < 1 )
+		xhr.onreadystatechange = function() 
 		{
-			document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
-			return;
-		}
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				var jsonObject = JSON.parse(xhr.responseText);
 		
-		firstName = jsonObject.firstName;
-		lastName = jsonObject.lastName;
+				userId = jsonObject.id;
+		
+				if( userId < 1 )
+				{
+					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					return;
+				}
+		
+				//firstName = jsonObject.firstName;
+				//lastName = jsonObject.lastName;
 
-		saveCookie(); 
+				//saveCookie();
 	
-		window.location.href = "home.html";
+				window.location.href = "home.html";
+			}
+		};
+		
+		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
@@ -52,47 +59,47 @@ function doLogin()
 
 }
 
-function saveCookie()
-{
-	let minutes = 20;
-	let date = new Date();
-	date.setTime(date.getTime() + (minutes * 60 * 1000));	
-	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
-}
+// function saveCookie()
+// {
+// 	let minutes = 20;
+// 	let date = new Date();
+// 	date.setTime(date.getTime() + (minutes * 60 * 1000));	
+// 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+// }
 
-function readCookie()
-{
-	userId = -1;
-	let data = document.cookie;
-	let splits = data.split(",");
+// function readCookie()
+// {
+// 	userId = -1;
+// 	let data = document.cookie;
+// 	let splits = data.split(",");
 
-	for(let i = 0; i < splits.length; i++) 
-	{
-		let thisOne = splits[i].trim();
-		let tokens = thisOne.split("=");
-		if( tokens[0] == "firstName" )
-		{
-			firstName = tokens[1];
-		}
-		else if( tokens[0] == "lastName" )
-		{
-			lastName = tokens[1];
-		}
-		else if( tokens[0] == "userId" )
-		{
-			userId = parseInt( tokens[1].trim() );
-		}
-	}
+// 	for(let i = 0; i < splits.length; i++) 
+// 	{
+// 		let thisOne = splits[i].trim();
+// 		let tokens = thisOne.split("=");
+// 		if( tokens[0] == "firstName" )
+// 		{
+// 			firstName = tokens[1];
+// 		}
+// 		else if( tokens[0] == "lastName" )
+// 		{
+// 			lastName = tokens[1];
+// 		}
+// 		else if( tokens[0] == "userId" )
+// 		{
+// 			userId = parseInt( tokens[1].trim() );
+// 		}
+// 	}
 	
-	if( userId < 0 )
-	{
-		window.location.href = "index.html";
-	}
-	else
-	{
-		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
-	}
-}
+// 	if( userId < 0 )
+// 	{
+// 		window.location.href = "index.html";
+// 	}
+// 	else
+// 	{
+// 		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+// 	}
+// }
 
 function doLogout()
 {
