@@ -19,7 +19,7 @@ function doLogin()
 	document.getElementById("loginResult").innerHTML = "";
 
 	// Creating the jsonPayload
-	let jsonPayload = '{"email" : "' + login + '", "pass" : "' + hash + '"}';
+	let jsonPayload = '{"email" : "' + login + '", "pass" : "' + password + '"}';
 	let url = urlBase + '/Login.' + extension;
 
 	let xhr = new XMLHttpRequest();
