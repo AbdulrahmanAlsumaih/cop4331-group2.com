@@ -2,6 +2,15 @@
   background-color: rgb(49, 49, 49);
 }
 
+.background-img {
+  background-image: url("/html/img/skylineBetter.jpg");
+  height: 400px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
 .text {
   color: white;
   text-align: center;
@@ -11,14 +20,16 @@
 }
 
 .title-text {
-  color: steelblue;
+  color: white;
+  text-shadow: 2px 2px 5px black;
   text-align: center;
   font-size: 60px;
   font-family: "Raleway", sans-serif;
 }
 
 .subtitle-text {
-  color: rgb(47, 90, 124);
+  color: white;
+  text-shadow: 2px 2px 4px black;
   text-align: center;
   font-size: 17px;
   font-family: "Raleway", sans-serif;
@@ -42,22 +53,18 @@
   padding-bottom: 50px;
 }
 
-.jumbotron {
-  background-color: rgb(255, 255, 255);
-}
-
 table {
-  border-radius: 6px; 
+  border-radius: 6px;
   background-color: white;
   table-layout: fixed;
 }
 
-.table-title-text{
+.table-title-text {
   color: white;
 }
 
 tr:first-child {
-  background-color: #FF0000;
+  background-color: #ff0000;
 }
 
 tr:nth-child(odd) {
@@ -65,17 +72,17 @@ tr:nth-child(odd) {
 }
 
 th {
-  text-align:center;
+  text-align: center;
 }
 
 tr {
-  text-align:center;
+  text-align: center;
 }
 
 .center {
   margin-left: auto;
   margin-right: auto;
-  border-radius: 6px; 
+  border-radius: 6px;
   background-color: white;
   width: 60%;
   table-layout: fixed;
@@ -86,13 +93,13 @@ tr {
   margin-right: auto;
   position: relative;
   top: 10px;
-  width:40px;
-  height:50px;
+  width: 40px;
+  height: 50px;
   display: inline-block;
 }
 
 .page-nums {
-  color:rgb(48, 125, 246);
+  color: rgb(48, 125, 246);
   display: inline-block;
   margin-left: 70%;
   margin-right: auto;
@@ -103,4 +110,5 @@ tr {
 .submit-mag {
   position: relative;
   display: inline-block;
+  width: auto;
 }
