@@ -14,12 +14,12 @@ function doLogin()
 	// Getting data from the html IDs
 	let login = document.getElementById("loginEmail").value;
 	let password = document.getElementById("loginPassword").value;
-	let hash = md5(password); // Hashing password
+	//let hash = md5(password); // Hashing password
 	
 	document.getElementById("loginResult").innerHTML = "";
 
 	// Creating the jsonPayload
-	let jsonPayload = '{"email" : "' + login + '", "pass" : "' + hash + '"}';
+	let jsonPayload = '{"email" : "' + login + '", "pass" : "' + password + '"}';
 	let url = urlBase + '/login.' + extension;
 
 	let xhr = new XMLHttpRequest();
