@@ -49,9 +49,7 @@
 table {
   border-radius: 6px; 
   background-color: white;
-  width: 80%;
   table-layout: fixed;
-
 }
 
 .table-title-text{
@@ -66,7 +64,43 @@ tr:nth-child(odd) {
   background-color: #e3e3e3;
 }
 
+th {
+  text-align:center;
+}
+
+tr {
+  text-align:center;
+}
+
 .center {
   margin-left: auto;
   margin-right: auto;
+  border-radius: 6px; 
+  background-color: white;
+  width: 60%;
+  table-layout: fixed;
+}
+
+.search-center {
+  margin-left: 22%;
+  margin-right: auto;
+  position: relative;
+  top: 10px;
+  width:40px;
+  height:50px;
+  display: inline-block;
+}
+
+.page-nums {
+  color:rgb(48, 125, 246);
+  display: inline-block;
+  margin-left: 70%;
+  margin-right: auto;
+  position: absolute;
+  display: inline-block;
+}
+
+.submit-mag {
+  position: relative;
+  display: inline-block;
 }

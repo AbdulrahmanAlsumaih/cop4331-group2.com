@@ -9,9 +9,7 @@ function createTable()
   let contact = [["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"]];
   let tr;
   let td;
-  let contact = fetch(url + 'getcontacts.' + extension, {"pagenumber" : 1});
-  console.log(contact);
-  for (var i = 0; i < length; i++)
+  for (let i = 0; i < length; i++)
   {
     tr = document.createElement('tr');
     for (let j = 0; j < 3; j ++)
@@ -23,6 +21,16 @@ function createTable()
     document.getElementById("create-table").appendChild(tr);
   }
 }
+
+function replace()
+{
+	let Image_Id = document.getElementById('magnify');
+	Image_Id.style="width:40%; height:10%;";
+	Image_Id.type="text";
+	Image_Id.placeholder = "Enter contact here";
+	document.getElementById("submit-magnify").innerHTML = "<button class=\"submit-mag\">Submit</button>";
+}
+
 /*
 function getContact()
 {
@@ -31,7 +39,7 @@ function getContact()
 	var contacts = [];
 	
 	var jsonPayload = '{"pagenumber" : "' + 1 + '}';
-	var url = urlBase + '/getcontacts.' + extension + '?pagenumber=1';
+	var url = urlBase + '/getcontacts.' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
@@ -47,7 +55,6 @@ function getContact()
 				
 				for( var i=0; i<jsonObject.results.length; i++ )
 				{
-					console.log(jsonObject.results[i]);
 					contacts.push(jsonObject.results[i]);
 					if( i < jsonObject.results.length - 1 )
 					{

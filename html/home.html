@@ -1,28 +1,6 @@
 <!doctype html>
 <html lang="en">
   <script type="text/javascript" src="../js/contact.js"></script>
-  <!--
-  <script type="text/javascript">
-    function createTable()
-    {
-      var length = 10;
-      var contact = [["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"]];
-      var tr;
-      var td;
-      for (var i = 0; i < length; i++)
-      {
-        tr = document.createElement('tr');
-        for (var j = 0; j < 3; j ++)
-        {
-          td = document.createElement('td');
-          td.innerHTML = contact[i][j];
-          tr.appendChild(td);
-        }
-        document.getElementById("create-table").appendChild(tr);
-      }
-    }
-  </script>
-  -->
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -37,7 +15,7 @@
     <title>EzContact</title>
   </head>
 
-  <body class="background" onload="getContact()">
+  <body class="background" onload="createTable()">
 
     <div class="container pad">
       <div class="row justify-content-center">
@@ -46,13 +24,16 @@
         </div>
       </div>
     </div>
+    <input id="magnify" type="image" src="search.png" class="search-center" onclick="replace()"></input>
+    <div id="submit-magnify" style="display: inline-block;"></div>
     <table id="create-table" class="center">
-        <tr style="background-color:rgb(48, 125, 246);" class="table-title-text">
-            <th>First</th>
-            <th>Last</th>
-            <th>Phone</th>
-        </tr>
-      </table>
+      <tr style="background-color:rgb(48, 125, 246);" class="table-title-text">
+        <th>First</th>
+        <th>Last</th>
+        <th>Phone</th>
+      </tr>
+    </table>
+    <h3 class="page-nums">< 1 2 3 4 ></h3>
   </body>
 </html>
 
