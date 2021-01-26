@@ -17,9 +17,9 @@
                 {
                         $row = $result->fetch_assoc();
                         $id = $row["id"];
-                        // session_start();
-                        // $_SESSION["id"] = $id;
-			// 			echo "IDS ARE " . $_SESSION['id'] . " " . $id;
+                        session_start();
+                        $_SESSION["id"] = $id;
+						//echo "IDS ARE " . $_SESSION['id'] . " " . $id;
                         returnWithInfo($id);
                 }
                 else

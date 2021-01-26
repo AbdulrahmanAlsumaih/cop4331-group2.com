@@ -23,7 +23,7 @@ function doLogin()
 	let url = urlBase + '/login.' + extension;
 
 	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
+	xhr.open("GET", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
@@ -31,7 +31,7 @@ function doLogin()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				var jsonObject = JSON.parse(xhr.responseText);
+				let jsonObject = JSON.parse(xhr.responseText);
 		
 				userId = jsonObject.id;
 		
