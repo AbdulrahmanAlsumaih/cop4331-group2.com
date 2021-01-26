@@ -1,6 +1,6 @@
 <?php
 
-        $inData = $_GET;
+        $inData = getRequestInfo();
 
         $id = 0;
 
@@ -19,7 +19,6 @@
                         $id = $row["id"];
                         session_start();
                         $_SESSION["id"] = $id;
-						//echo "IDS ARE " . $_SESSION['id'] . " " . $id;
                         returnWithInfo($id);
                 }
                 else

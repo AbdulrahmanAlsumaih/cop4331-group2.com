@@ -1,6 +1,6 @@
 <?php
 
-	$inData = $_GET;
+	$inData = getRequestInfo();
 	
 	$id = 0;
 	
@@ -29,10 +29,8 @@
 			$result = $conn->query($sql);
 			if ($result->num_rows > 0)
 			{
-				//echo 'before ' . $id;
 				$row = $result->fetch_assoc();
 				$id = $row["id"];
-				//echo 'after ' . $id;
 				
 				// Increment the ID
 				$id = $id + 1;

@@ -1,5 +1,5 @@
 <?php
-	$inData = $_GET;
+	$inData = getRequestInfo();
 	session_start();
 	// Check if user is logged in
 	if ($_SESSION['id'] == NULL)
