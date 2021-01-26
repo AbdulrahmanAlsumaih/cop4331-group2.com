@@ -23,10 +23,13 @@ function doLogin()
 	let url = urlBase + '/login.' + extension;
 
 	let xhr = new XMLHttpRequest();
-	xhr.open("GET", url, true);
+	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
+		// Sending json
+		xhr.send(jsonPayload);
+
 		xhr.onreadystatechange = function() 
 		{
 			if (this.readyState == 4 && this.status == 200) 
@@ -50,7 +53,6 @@ function doLogin()
 			}
 		};
 		
-		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
