@@ -9,6 +9,10 @@ function createTable(contact)
   //let contact = [["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"]];
   let tr;
   let td;
+	let contact = fetch(url + 'getcontacts.' + extension, {
+  "pagenumber" : 1
+});
+	console.log(contact);
   for (var i = 0; i < length; i++)
   {
     tr = document.createElement('tr');
