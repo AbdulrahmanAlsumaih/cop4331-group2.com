@@ -38,7 +38,6 @@ function getContact()
 	{
 		xhr.onreadystatechange = function() 
 		{
-			alert(this.status);
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				//document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
@@ -46,6 +45,7 @@ function getContact()
 				
 				for( var i=0; i<jsonObject.results.length; i++ )
 				{
+					console.log(jsonObject.results[i]);
 					contacts.push(jsonObject.results[i]);
 					if( i < jsonObject.results.length - 1 )
 					{
