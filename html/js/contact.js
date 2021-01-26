@@ -29,7 +29,7 @@ function getContact()
 	var contacts = [];
 	
 	var jsonPayload = '{"pagenumber" : "' + 1 + '}';
-	var url = urlBase + '/getcontacts.' + extension;
+	var url = urlBase + '/getcontacts.' + extension + '?pagenumber=1';
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
