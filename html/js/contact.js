@@ -38,6 +38,7 @@ function getContact()
 	{
 		xhr.onreadystatechange = function() 
 		{
+			alert(this.status);
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				//document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
