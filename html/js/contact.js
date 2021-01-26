@@ -1,18 +1,16 @@
 let urlBase = 'http://www.cop4331-group2.com/api';
 let extension = 'php';
 
-function createTable(contact)
+function createTable()
 {
   //let email = document.getElementById("email").value;
   //let pass = document.getElementById("pass").value;
   let length = 10;
-  //let contact = [["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"]];
+  let contact = [["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"]];
   let tr;
   let td;
-	let contact = fetch(url + 'getcontacts.' + extension, {
-  "pagenumber" : 1
-});
-	console.log(contact);
+  let contact = fetch(url + 'getcontacts.' + extension, {"pagenumber" : 1});
+  console.log(contact);
   for (var i = 0; i < length; i++)
   {
     tr = document.createElement('tr');
@@ -25,7 +23,7 @@ function createTable(contact)
     document.getElementById("create-table").appendChild(tr);
   }
 }
-
+/*
 function getContact()
 {
 	//document.getElementById("colorSearchResult").innerHTML = "";
@@ -68,3 +66,4 @@ function getContact()
 	}
 	
 }
+*/
