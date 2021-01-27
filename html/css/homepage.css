@@ -12,6 +12,10 @@
   background-position-y: 60%;
 }
 
+.width-limit {
+  max-width: 800px;
+}
+
 .text {
   color: white;
   text-align: center;
