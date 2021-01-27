@@ -47,7 +47,11 @@
 				{
 					returnWithError( $conn->error);
 				}
-			$conn->close();		
+			$conn->close();
+			
+			// Log the new user in
+			session_start();
+			$_SESSION["id"] = $id;
 			returnWithInfo($id);
 		}
 		else
