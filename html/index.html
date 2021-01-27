@@ -29,38 +29,34 @@
     <br>
     <br>
 
-    <div class="card mx-auto w-50 bg-dark border-light">
-      <div id="loginDiv" class="container">
-        <div class="card-body">
-          <div class="row justify-content-center">
-            <div class="col-sm-12">
-              <p class="text">Log In</p>
-            </div>
+    <div id="loginDiv" class="container bottom">
+      <div class="row justify-content-center">
+        <div class="col-sm-12">
+          <p class="text">Log In</p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="form-group">
+            <label class="login-text" for="loginEmail">Email:</label>
+            <input type="text" class="form-control" id="loginEmail"  placeholder="Enter email address">
           </div>
-          <div class="row justify-content-center">
-            <div class="col-md-8">
-              <div class="form-group">
-                <label class="login-text" for="loginEmail">Email:</label>
-                <input type="text" class="form-control" id="loginEmail"  placeholder="Enter email address">
-              </div>
-              <div class="form-group">
-                <label class="login-text" for="loginPassword">Password:</label>
-                <input type="password" class="form-control" id="loginPassword"  placeholder="Enter password">
-              </div>
-            </div>
-          </div>
-          <div class="row justify-content-center pad-top">
-            <button type="submit" class="btn btn-primary btn-lg" id="loginButton" onclick="doLogin();">Log In</button>
-          </div>
-          <div class="row justify-content-center pad-top">
-            <span class="login-text" id="loginResult"></span>
-          </div>
-          <div class="row justify-content-center bottom">
-            <a href="signup.html">
-              <button type="button" class="btn btn-primary btn-lg">Create New Account</button>
-            </a>
+          <div class="form-group">
+            <label class="login-text" for="loginPassword">Password:</label>
+            <input type="password" class="form-control" id="loginPassword"  placeholder="Enter password">
           </div>
         </div>
+      </div>
+      <div class="row justify-content-center pad-top">
+        <button type="submit" class="btn btn-primary btn-lg" id="loginButton" onclick="doLogin();">Log In</button>
+      </div>
+      <div class="row justify-content-center pad-top">
+        <span class="login-text" id="loginResult"></span>
+      </div>
+      <div class="row justify-content-center bottom">
+        <a href="signup.html">
+          <button type="button" class="btn btn-primary btn-lg">Create New Account</button>
+        </a>
       </div>
     </div>
       
