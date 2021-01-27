@@ -24,12 +24,12 @@ function doSignUp()
     }
 
     if (signupEmail == "") {
-        document.getElementById("signupResult").innerHTML = "Please enter an email";
+        document.getElementById("signupResult").innerHTML = "Please enter an email address";
         return;
     }
 
     if (signupPassword == "") {
-        document.getElementById("signupResult").innerHTML = "Please enter an password";
+        document.getElementById("signupResult").innerHTML = "Please enter a password";
         return;
     }
 
@@ -54,7 +54,7 @@ function doSignUp()
 				//lastName = jsonObject.lastName;
     
                 // Could make this go to home if the login happens during the signup
-				window.location.href = "index.html";
+				window.location.href = "home.html";
 			}
 		};
 		
