@@ -1,5 +1,5 @@
 .background {
-  background-color: rgb(49, 49, 49);
+  background-color: rgb(31, 31, 31);
 }
 
 .background-img {
@@ -50,7 +50,7 @@
 }
 
 .bottom {
-  padding-bottom: 50px;
+  padding-bottom: 25px;
 }
 
 table {
