@@ -25,7 +25,7 @@ function createTable()
 function replace()
 {
 	let Image_Id = document.getElementById('magnify');
-	Image_Id.style="width:40%; height:10%;";
+	Image_Id.style="width:50%; height:100%;";
 	Image_Id.type="text";
 	Image_Id.placeholder = "Enter contact here";
 	document.getElementById("submit-magnify").innerHTML = "<button class=\"submit-mag\">Submit</button>";
