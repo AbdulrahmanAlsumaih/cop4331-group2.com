@@ -8,8 +8,6 @@ let lastName = "";
 function doLogin()
 {
 	userId = 0;
-	// firstName = "";
-	// lastName = "";
 	
 	// Getting data from the html IDs
 	let login = document.getElementById("loginEmail").value;
@@ -44,11 +42,6 @@ function doLogin()
 					return;
 				}
 		
-				//firstName = jsonObject.firstName;
-				//lastName = jsonObject.lastName;
-
-				//saveCookie();
-	
 				window.location.href = "home.html";
 			}
 		};
@@ -65,9 +58,7 @@ function doLogin()
 function doLogout()
 {
 	userId = 0;
-	firstName = "";
-	lastName = "";
-	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+	// document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	
 	window.location.href = "index.html";
 }

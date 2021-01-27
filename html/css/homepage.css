@@ -117,3 +117,24 @@ tr {
   display: inline-block;
   width: auto;
 }
+
+.buttonLogout {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  color: #fff;
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px black;
+}
+
+.buttonLogout:hover {background-color: darkred}
+
+.buttonLogout:active {
+  background-color: darkred;
+  box-shadow: 0 2px black;
+  transform: translateY(4px);
+}

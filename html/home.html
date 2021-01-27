@@ -1,10 +1,14 @@
 <!doctype html>
 <html lang="en">
-  <script type="text/javascript" src="js/contact.js"></script>
+  
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- JavaScript -->
+    <script type="text/javascript" src="js/contact.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -17,22 +21,32 @@
 
   <body class="background" onload="createTable()">
 
+    <!-- This design is most likely gonna be changed -->
+    <!-- We still need to implement the CRUD stuff as well as search -->
+    <!-- So we need to figure out where to put that stuff as well as make it look nice-->
     <div class="container pad">
-      <div class="row justify-content-center">
-        <div class="col-sm-12">
+      <div class="row pad bottom">
+        <div class="col-sm-4">
+          <button type="button" class="buttonLogout" onclick="doLogout();">Logout</button>
+        </div>
+        <div class="col-sm-4">
           <p class="text">Contacts</p>
         </div>
+        <div class="col-sm-4">
+          <input id="magnify" type="image" src="/html/img/search.png" class="search-center" onclick="replace()"></input>
+          <div id="submit-magnify" style="display: inline-block;"></div>
+        </div>
+      </div>
+      <div class="row justify-content-center pad">
+        <table id="create-table" class="center">
+          <tr style="background-color:rgb(48, 125, 246);" class="table-title-text">
+            <th>First</th>
+            <th>Last</th>
+            <th>Phone</th>
+          </tr>
+        </table>
       </div>
     </div>
-    <input id="magnify" type="image" src="search.png" class="search-center" onclick="replace()"></input>
-    <div id="submit-magnify" style="display: inline-block;"></div>
-    <table id="create-table" class="center">
-      <tr style="background-color:rgb(48, 125, 246);" class="table-title-text">
-        <th>First</th>
-        <th>Last</th>
-        <th>Phone</th>
-      </tr>
-    </table>
     <h3 class="page-nums">< 1 2 3 4 ></h3>
   </body>
 </html>
