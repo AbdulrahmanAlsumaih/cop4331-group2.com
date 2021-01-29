@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   
@@ -33,13 +34,13 @@
           <p class="text">Contacts</p>
         </div>
         <div class="col-sm-4">
-          <input id="magnify" type="image" src="/html/img/search.png" class="search-center" onclick="replace()"></input>
-          <div id="submit-magnify" style="display: inline-block;"></div>
+          <input id="magnify" type="image" src="/img/search.png" class="search-center" onclick="replace()"></input>
+          <div id="submit-magnify" style="position: relative; display: inline-block;"></div>
         </div>
       </div>
       <div class="row justify-content-center pad">
         <table id="create-table" class="center">
-          <tr style="background-color:rgb(48, 125, 246);" class="table-title-text">
+          <tr id="header" style="background-color:rgb(48, 125, 246);" class="table-title-text">
             <th>First</th>
             <th>Last</th>
             <th>Phone</th>
@@ -47,7 +48,8 @@
         </table>
       </div>
     </div>
-    <h3 class="page-nums">< 1 2 3 4 ></h3>
+    <button class="page-nums" onclick="changePage(-1); createTable()"><</button>
+    <button class="page-nums" onclick="changePage(1); createTable()">></button>
   </body>
 </html>
 
