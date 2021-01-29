@@ -1,15 +1,18 @@
 let urlBase = 'http://www.cop4331-group2.com/api';
 let extension = 'php';
-
+let counter = 1;
 function createTable()
 {
   //let email = document.getElementById("email").value;
   //let pass = document.getElementById("pass").value;
-  let length = 10;
-  let contact = [["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"], ["John", "Smith", "1-234-567-8910"], ["first", "last", "number"]];
+  let length = counter * 2;
+  let contact = [["1", "Smith", "1-234-567-8910"], ["2", "last", "number"], ["3", "Smith", "1-234-567-8910"], ["4", "last", "number"], ["5", "Smith", "1-234-567-8910"], ["6", "last", "number"], ["7", "Smith", "1-234-567-8910"], ["8", "last", "number"], ["9", "Smith", "1-234-567-8910"], ["10", "last", "number"]];
   let tr;
   let td;
-  for (let i = 0; i < length; i++)
+  let save = document.getElementById("header");
+  document.getElementById("create-table").innerHTML = '';
+  document.getElementById("create-table").appendChild(save);
+  for (let i = length - 2; i < length; i++)
   {
     tr = document.createElement('tr');
     for (let j = 0; j < 3; j ++)
@@ -17,15 +20,31 @@ function createTable()
       td = document.createElement('td');
       td.innerHTML = contact[i][j];
       tr.appendChild(td);
-    }
+	}
     document.getElementById("create-table").appendChild(tr);
   }
+}
+
+function changePage(change)
+{
+	if (change == 1)
+	{
+		counter++;
+		if (counter > 5)
+			counter = 1;
+	}
+	else if (change == -1)
+	{
+		counter--;
+		if (counter < 1)
+			counter = 5;
+	}
 }
 
 function replace()
 {
 	let Image_Id = document.getElementById('magnify');
-	Image_Id.style="width:50%; height:100%;";
+	Image_Id.style="width:50%; height:50%;";
 	Image_Id.type="text";
 	Image_Id.placeholder = "Enter contact here";
 	document.getElementById("submit-magnify").innerHTML = "<button class=\"submit-mag\">Submit</button>";
