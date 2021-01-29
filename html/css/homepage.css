@@ -1,19 +1,5 @@
 .background {
-  background-color: rgb(31, 31, 31);
-}
-
-.background-img {
-  background-image: url(../img/background.jpg);
-  height: 400px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  position: relative;
-  background-position-y: 60%;
-}
-
-.width-limit {
-  max-width: 800px;
+  background-color: rgb(49, 49, 49);
 }
 
 .text {
@@ -25,16 +11,14 @@
 }
 
 .title-text {
-  color: white;
-  text-shadow: 2px 2px 5px black;
+  color: steelblue;
   text-align: center;
   font-size: 60px;
   font-family: "Raleway", sans-serif;
 }
 
 .subtitle-text {
-  color: white;
-  text-shadow: 2px 2px 4px black;
+  color: rgb(47, 90, 124);
   text-align: center;
   font-size: 17px;
   font-family: "Raleway", sans-serif;
@@ -55,21 +39,25 @@
 }
 
 .bottom {
-  padding-bottom: 25px;
+  padding-bottom: 50px;
+}
+
+.jumbotron {
+  background-color: rgb(255, 255, 255);
 }
 
 table {
-  border-radius: 6px;
+  border-radius: 6px; 
   background-color: white;
   table-layout: fixed;
 }
 
-.table-title-text {
+.table-title-text{
   color: white;
 }
 
 tr:first-child {
-  background-color: #ff0000;
+  background-color: #FF0000;
 }
 
 tr:nth-child(odd) {
@@ -77,17 +65,17 @@ tr:nth-child(odd) {
 }
 
 th {
-  text-align: center;
+  text-align:center;
 }
 
 tr {
-  text-align: center;
+  text-align:center;
 }
 
 .center {
   margin-left: auto;
   margin-right: auto;
-  border-radius: 6px;
+  border-radius: 6px; 
   background-color: white;
   width: 60%;
   table-layout: fixed;
@@ -98,24 +86,23 @@ tr {
   margin-right: auto;
   position: relative;
   top: 10px;
-  width: 40px;
-  height: 50px;
+  width:40px;
+  height:50px;
   display: inline-block;
 }
 
 .page-nums {
-  color: rgb(48, 125, 246);
+  color:rgb(48, 125, 246);
   display: inline-block;
   margin-left: 70%;
   margin-right: auto;
-  position: absolute;
+  position: relative;
   display: inline-block;
 }
 
 .submit-mag {
   position: relative;
   display: inline-block;
-  width: auto;
 }
 
 .buttonLogout {
