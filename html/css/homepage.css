@@ -12,6 +12,10 @@
   background-position-y: 60%;
 }
 
+.width-limit {
+  max-width: 800px;
+}
+
 .text {
   color: white;
   text-align: center;
@@ -21,14 +25,16 @@
 }
 
 .title-text {
-  color: steelblue;
+  color: white;
+  text-shadow: 2px 2px 5px black;
   text-align: center;
   font-size: 60px;
   font-family: "Raleway", sans-serif;
 }
 
 .subtitle-text {
-  color: rgb(47, 90, 124);
+  color: white;
+  text-shadow: 2px 2px 4px black;
   text-align: center;
   font-size: 17px;
   font-family: "Raleway", sans-serif;
@@ -50,10 +56,6 @@
 
 .bottom {
   padding-bottom: 50px;
-}
-
-.jumbotron {
-  background-color: rgb(255, 255, 255);
 }
 
 table {
