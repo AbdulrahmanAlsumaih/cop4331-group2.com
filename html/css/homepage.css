@@ -155,9 +155,9 @@ a {
 }
 
 a:hover {
-  color: rgb(255, 255, 255);
+  color: rgb(197, 197, 197);
   text-decoration: none;
-  text-shadow: 0px 0px 10px black;
+  text-shadow: 0px 0px 15px black;
 }
 
 .card {
@@ -231,7 +231,7 @@ a:hover {
 }
 
 .nav input[type="text"] {
-  margin: 10px 5px;
+  margin: 10px 10px;
 }
 
 @media screen and (max-width: 600px) {
