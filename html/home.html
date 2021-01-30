@@ -16,30 +16,34 @@
     <link rel="stylesheet" href="css/homepage.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <title>EzContact</title>
   </head>
 
   <body class="background" onload="createTable()">
 
-    <!-- This design is most likely gonna be changed -->
-    <!-- We still need to implement the CRUD stuff as well as search -->
-    <!-- So we need to figure out where to put that stuff as well as make it look nice-->
+    <div class="nav">
+      <input type="text" placeholder="Search...">
+      <button type="submit"><i class="fa fa-search"></i></button>
+      <a href="">Add</a>
+      <a href="">Update</a>
+      <a href="">Delete</a>
+      <a href="index.html" onclick="doLogout()">Logout</a>
+    </div>
+
     <div class="container pad">
-      <div class="row pad bottom">
-        <div class="col-sm-4">
-          <button type="button" class="buttonLogout" onclick="doLogout();">Logout</button>
-        </div>
+      <div class="row justify-content-center pad bottom">
         <div class="col-sm-4">
           <p class="text">Contacts</p>
         </div>
-        <div class="col-sm-4">
-          <input id="magnify" type="image" src="/img/search.png" class="search-center" onclick="replace()"></input>
+        <!-- <div class="col-sm-4">
+          <input id="magnify" type="image" src="../img/search.png" class="search-center" onclick="replace()"></input>
           <div id="submit-magnify" style="position: relative; display: inline-block;"></div>
-        </div>
+        </div> -->
       </div>
-      <div class="row justify-content-center pad">
-        <table id="create-table" class="center">
+      <div class="row justify-content-center">
+        <table id="create-table" class="table-style">
           <tr id="header" style="background-color:rgb(48, 125, 246);" class="table-title-text">
             <th>First</th>
             <th>Last</th>
@@ -47,9 +51,22 @@
           </tr>
         </table>
       </div>
+      <div class="row justify-content-center pad">
+        <button class="page-nums" onclick="changePage(-1); createTable()">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </button>
+        <button class="page-nums" onclick="changePage(1); createTable()">
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </button>
+      </div>
+      <!-- <div id="overlay" onclick="overlayOff();">
+        <div class="text">awdawd</div>
+      </div>
+      <div style="padding:20px">
+        <h2 class="text">Add contact</h2>
+        <button type="button" onclick="overlayOn();">Turn on overlay effect</button>
+      </div> -->
     </div>
-    <button class="page-nums" onclick="changePage(-1); createTable()"><</button>
-    <button class="page-nums" onclick="changePage(1); createTable()">></button>
   </body>
 </html>
 

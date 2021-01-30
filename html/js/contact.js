@@ -50,6 +50,14 @@ function replace()
 	document.getElementById("submit-magnify").innerHTML = "<button class=\"submit-mag\">Submit</button>";
 }
 
+// function overlayOn() {
+// 	document.getElementById("overlay").style.display = "block";
+// }
+  
+// function overlayOff() {
+// 	document.getElementById("overlay").style.display = "none";
+// }
+
 /*
 function getContact()
 {
