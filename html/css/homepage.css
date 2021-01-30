@@ -2,6 +2,16 @@
   background-color: rgb(49, 49, 49);
 }
 
+.background-img {
+  background-image: url(../img/background.jpg);
+  height: 400px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  background-position-y: 60%;
+}
+
 .text {
   color: white;
   text-align: center;
