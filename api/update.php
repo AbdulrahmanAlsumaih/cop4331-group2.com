@@ -1,6 +1,13 @@
 <?
     $inData = getRequestInfo();
-    
+    //gets the open session
+    session_start();
+    //if there is no previous session ERROR
+    if($_SESSION['id'] == NULL)
+    {
+        returnWithError('ERROR: User must be logged in');
+        exit();
+    }
     //Connect to the DB
     $conn = new mysqli("localhost", "db_user", "123", "contact_db");
 
@@ -13,7 +20,7 @@
     }
     else
     {
-        $sql = "UPDATE contacts SET firstname = $inData['firstname'], 'lastname' = $inData['lastname'], email = $inData['email'], phone = $inData['phone']";
+        $sql = "UPDATE contacts SET firstname = $inData['firstname'], 'lastname' = $inData['lastname'], email = $inData['email'], phone = $inData['phone'] WHERE num = $_SESSION['id']";
         if($result = $conn->query($sql) != TRUE)
         {
             returnWithError( $conn->error);
@@ -31,6 +38,4 @@
         $retValue = '{"error":"' . $err . '"}';
         sendResultInfoAsJson($retValue);
     }
-
-
 ?>
