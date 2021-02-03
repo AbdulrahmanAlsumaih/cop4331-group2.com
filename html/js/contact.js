@@ -50,12 +50,41 @@ function replace()
 	document.getElementById("submit-magnify").innerHTML = "<button class=\"submit-mag\">Submit</button>";
 }
 
-// function overlayOn() {
-// 	document.getElementById("overlay").style.display = "block";
-// }
+function overlayOn() {
+	document.getElementById("overlay").style.display = "block";
+}
   
-// function overlayOff() {
-// 	document.getElementById("overlay").style.display = "none";
+function overlayOff() {
+	document.getElementById("overlay").style.display = "none";
+}
+
+// function addContact()
+// {
+// 	let newColor = document.getElementById("colorText").value;
+// 	document.getElementById("colorAddResult").innerHTML = "";
+	
+// 	let jsonPayload = '{"color" : "' + newColor + '", "userId" : ' + userId + '}';
+// 	let url = urlBase + '/AddColor.' + extension;
+	
+// 	let xhr = new XMLHttpRequest();
+// 	xhr.open("POST", url, true);
+// 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+// 	try
+// 	{
+// 		xhr.onreadystatechange = function() 
+// 		{
+// 			if (this.readyState == 4 && this.status == 200) 
+// 			{
+// 				document.getElementById("colorAddResult").innerHTML = "Color has been added";
+// 			}
+// 		};
+// 		xhr.send(jsonPayload);
+// 	}
+// 	catch(err)
+// 	{
+// 		document.getElementById("colorAddResult").innerHTML = err.message;
+// 	}
+	
 // }
 
 /*

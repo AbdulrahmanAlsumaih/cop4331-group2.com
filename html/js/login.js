@@ -63,35 +63,6 @@ function doLogout()
 	window.location.href = "index.html";
 }
 
-// function addColor()
-// {
-// 	let newColor = document.getElementById("colorText").value;
-// 	document.getElementById("colorAddResult").innerHTML = "";
-	
-// 	let jsonPayload = '{"color" : "' + newColor + '", "userId" : ' + userId + '}';
-// 	let url = urlBase + '/AddColor.' + extension;
-	
-// 	let xhr = new XMLHttpRequest();
-// 	xhr.open("POST", url, true);
-// 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-// 	try
-// 	{
-// 		xhr.onreadystatechange = function() 
-// 		{
-// 			if (this.readyState == 4 && this.status == 200) 
-// 			{
-// 				document.getElementById("colorAddResult").innerHTML = "Color has been added";
-// 			}
-// 		};
-// 		xhr.send(jsonPayload);
-// 	}
-// 	catch(err)
-// 	{
-// 		document.getElementById("colorAddResult").innerHTML = err.message;
-// 	}
-	
-// }
-
 // function searchColor()
 // {
 // 	let srch = document.getElementById("searchText").value;

@@ -164,33 +164,6 @@ a:hover {
   box-shadow: 0 0 25px black;
 }
 
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-5px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
-}
-
-#overlay {
-  position: fixed; /* Sit on top of the page content */
-  display: none; /* Hidden by default */
-  width: 50%; /* Full width (cover the whole page) */
-  height: 54%; /* Full height (cover the whole page) */
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-}
-
 .nav {
   overflow: hidden;
   background-color: black;
@@ -252,4 +225,43 @@ a:hover {
 
 input:focus {
   outline: none;
+}
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 50%; /* Full width (cover the whole page) */
+  height: 63%; /* Full height (cover the whole page) */
+  top: 10%;
+  left: 25%;
+  background-color: rgba(0, 0, 0, 0.95); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+.add-btn {
+  border: none;
+  background-color: inherit;
+  color: white;
+  font-size: 28px;
+}
+
+.add-btn:hover {
+  color: rgb(0, 139, 252);
+}
+
+.add-btn:active {
+  color: rgb(0, 84, 153);
+}
+
+.close-btn {
+  position: absolute;
+  right: 3px;
+  border: none;
+  background-color: inherit;
+  color: white;
+  font-size: 24px;
+}
+
+.close-btn:hover {
+  color: rgb(253, 62, 62);
 }

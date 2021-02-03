@@ -26,10 +26,10 @@
     <div class="nav">
       <input type="text" placeholder="Search...">
       <button type="submit"><i class="fa fa-search"></i></button>
-      <a href="">Add</a>
+      <button type="button" onclick="overlayOn();">Add</button>
       <a href="">Update</a>
       <a href="">Delete</a>
-      <a href="" onclick="doLogout()">Logout</a>
+      <a href="https://www.webull.com/activity/what-we-offer?source=google-search-pc-hy-gw&gclid=CjwKCAiAjeSABhAPEiwAqfxURRJiVYX6c36L9gCNcghYvavT9FOVWw2QIzPymrB59g2bSuKWc001MRoCpHgQAvD_BwE" onclick="doLogout()">Logout</a>
     </div>
 
     <div class="container pad">
@@ -37,10 +37,6 @@
         <div class="col-sm-4">
           <p class="text">Contacts</p>
         </div>
-        <!-- <div class="col-sm-4">
-          <input id="magnify" type="image" src="../img/search.png" class="search-center" onclick="replace()"></input>
-          <div id="submit-magnify" style="position: relative; display: inline-block;"></div>
-        </div> -->
       </div>
       <div class="row justify-content-center">
         <table id="create-table" class="table-style">
@@ -59,13 +55,44 @@
           <i class="fa fa-arrow-right" aria-hidden="true"></i>
         </button>
       </div>
-      <!-- <div id="overlay" onclick="overlayOff();">
-        <div class="text">awdawd</div>
+
+      <!-- Add contact overlay -->
+      <div id="overlay">
+        <button type="button" class="close-btn" onclick="overlayOff();"><i class="fa fa-window-close"></i></button>
+        <div class="container pad">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <br>
+              <div class="text">Add Contact</div>
+              <br>
+              <div class="form-group">
+                <label class="login-text" for="firstname">First Name:</label>
+                <input type="text" class="form-control" id="firstname" placeholder="Enter first name">
+              </div>
+              <div class="form-group">
+                <label class="login-text" for="lastname">Last Name:</label>
+                <input type="text" class="form-control" id="lastname" placeholder="Enter last name">
+              </div>
+              <div class="form-group">
+                <label class="login-text" for="email">Email Address:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label class="login-text" for="phone">Phone Number:</label>
+                <input type="tel" class="form-control" id="phone" placeholder="Enter phone">
+              </div>
+              <div class="form-group">
+                <label class="login-text" for="date">Date:</label>
+                <input type="date" class="form-control" id="date" placeholder="Enter date">
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <button type="submit" class="add-btn" onclick="addContact();"><i class="fa fa-user-plus"></i></button>
+          </div>
+        </div>
       </div>
-      <div style="padding:20px">
-        <h2 class="text">Add contact</h2>
-        <button type="button" onclick="overlayOn();">Turn on overlay effect</button>
-      </div> -->
+
     </div>
   </body>
 </html>
