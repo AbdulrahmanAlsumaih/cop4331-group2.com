@@ -62,6 +62,11 @@ function addContact() {
 	let phone = document.getElementById("phone").value;
 	let date = document.getElementById("date").value;
 	document.getElementById("addContactResult").innerHTML = "";
+
+	if (firstName === "" || lastName === "" || email === "" || phone === "" || date === "") {
+		document.getElementById("addContactResult").innerHTML = "Please add at least one field";
+		return;
+	}
 	
 	let jsonPayload = '{"firstname" : "' + firstName + '", "lastname" : "' + lastName + '", "email" : "' + email + '", "phone" : "' + phone + '", "date" : "' + date + '"}';
 	let url = urlBase + '/addcontact.' + extension;
@@ -74,7 +79,7 @@ function addContact() {
 		xhr.send(jsonPayload);
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("addContactResult").innerHTML = "Contact Added";
+				document.getElementById("addContactResult").innerHTML = "Contact Added!";
 			}
 		};
 	} catch(err) {
