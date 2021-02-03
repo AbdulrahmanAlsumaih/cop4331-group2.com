@@ -5,8 +5,7 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 
-function doLogin()
-{
+function doLogin() {
 	userId = 0;
 	
 	// Getting data from the html IDs
@@ -23,21 +22,18 @@ function doLogin()
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
+	
+	try {
 		// Sending json
 		xhr.send(jsonPayload);
 
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse(xhr.responseText);
 		
 				userId = jsonObject.id;
 		
-				if( userId < 1 )
-				{
+				if( userId < 1 ) {
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
@@ -46,17 +42,14 @@ function doLogin()
 			}
 		};
 		
-	}
-	catch(err)
-	{
+	} catch(err) {
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
 
 }
 
 
-function doLogout()
-{
+function doLogout() {
 	userId = 0;
 	// document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	

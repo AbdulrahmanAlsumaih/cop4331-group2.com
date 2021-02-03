@@ -1,8 +1,8 @@
 let urlBase = 'http://www.cop4331-group2.com/api';
 let extension = 'php';
 let counter = 1;
-function createTable()
-{
+
+function createTable() {
   //let email = document.getElementById("email").value;
   //let pass = document.getElementById("pass").value;
   let length = counter * 2;
@@ -10,39 +10,36 @@ function createTable()
   let tr;
   let td;
   let save = document.getElementById("header");
+  
   document.getElementById("create-table").innerHTML = '';
   document.getElementById("create-table").appendChild(save);
-  for (let i = length - 2; i < length; i++)
-  {
+  
+  for (let i = length - 2; i < length; i++) {
     tr = document.createElement('tr');
-    for (let j = 0; j < 3; j ++)
-    {
+	
+	for (let j = 0; j < 3; j ++) {
       td = document.createElement('td');
       td.innerHTML = contact[i][j];
       tr.appendChild(td);
 	}
+
     document.getElementById("create-table").appendChild(tr);
   }
 }
 
-function changePage(change)
-{
-	if (change == 1)
-	{
+function changePage(change) {
+	if (change == 1) {
 		counter++;
 		if (counter > 5)
 			counter = 1;
-	}
-	else if (change == -1)
-	{
+	} else if (change == -1) {
 		counter--;
 		if (counter < 1)
 			counter = 5;
 	}
 }
 
-function replace()
-{
+function replace() {
 	let Image_Id = document.getElementById('magnify');
 	Image_Id.style="width:50%; height:50%;";
 	Image_Id.type="text";
@@ -58,34 +55,33 @@ function overlayOff() {
 	document.getElementById("overlay").style.display = "none";
 }
 
-// function addContact()
-// {
-// 	let newColor = document.getElementById("colorText").value;
-// 	document.getElementById("colorAddResult").innerHTML = "";
+function addContact() {
+	let firstName = document.getElementById("firstname").value;
+	let lastName = document.getElementById("lastname").value;
+	let email = document.getElementById("email").value;
+	let phone = document.getElementById("phone").value;
+	let date = document.getElementById("date").value;
+	document.getElementById("addContactResult").innerHTML = "";
 	
-// 	let jsonPayload = '{"color" : "' + newColor + '", "userId" : ' + userId + '}';
-// 	let url = urlBase + '/AddColor.' + extension;
+	let jsonPayload = '{"firstname" : "' + firstName + '", "lastname" : "' + lastName + '", "email" : "' + email + '", "phone" : "' + phone + '", "date" : "' + date + '"}';
+	let url = urlBase + '/addcontact.' + extension;
 	
-// 	let xhr = new XMLHttpRequest();
-// 	xhr.open("POST", url, true);
-// 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-// 	try
-// 	{
-// 		xhr.onreadystatechange = function() 
-// 		{
-// 			if (this.readyState == 4 && this.status == 200) 
-// 			{
-// 				document.getElementById("colorAddResult").innerHTML = "Color has been added";
-// 			}
-// 		};
-// 		xhr.send(jsonPayload);
-// 	}
-// 	catch(err)
-// 	{
-// 		document.getElementById("colorAddResult").innerHTML = err.message;
-// 	}
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try {
+		xhr.send(jsonPayload);
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("addContactResult").innerHTML = "Contact Added";
+			}
+		};
+	} catch(err) {
+		document.getElementById("colorAddResult").innerHTML = err.message;
+	}
 	
-// }
+}
 
 /*
 function getContact()
