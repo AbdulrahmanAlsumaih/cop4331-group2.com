@@ -63,8 +63,8 @@ function addContact() {
 	let date = document.getElementById("date").value;
 	document.getElementById("addContactResult").innerHTML = "";
 
-	if (firstName === "" || lastName === "" || email === "" || phone === "" || date === "") {
-		document.getElementById("addContactResult").innerHTML = "Please add at least one field";
+	if (firstName === "" || lastName === "") {
+		document.getElementById("addContactResult").innerHTML = "Please add a full name";
 		return;
 	}
 	
