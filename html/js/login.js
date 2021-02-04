@@ -48,10 +48,10 @@ function doLogin() {
 
 }
 
-// Function needs to be fixed
 function doLogout() {
-	userId = 0;
 	let url = urlBase + '/logout.' + extension;
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
 	window.location.href = "index.html";
 }
 
