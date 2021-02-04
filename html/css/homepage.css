@@ -234,11 +234,11 @@ input:focus {
 
 .close-btn {
   position: absolute;
-  right: 3px;
+  right: 5px;
   border: none;
   background-color: inherit;
   color: white;
-  font-size: 24px;
+  font-size: 32px;
 }
 
 .close-btn:hover {
