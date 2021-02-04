@@ -47,20 +47,36 @@ function replace() {
 	document.getElementById("submit-magnify").innerHTML = "<button class=\"submit-mag\">Submit</button>";
 }
 
-function overlayOn() {
-	document.getElementById("overlay").style.display = "block";
+function overlayOnAdd() {
+	document.getElementById("add-overlay").style.display = "block";
 }
   
-function overlayOff() {
-	document.getElementById("overlay").style.display = "none";
+function overlayOffAdd() {
+	document.getElementById("add-overlay").style.display = "none";
+}
+
+function overlayOnUpdate() {
+	document.getElementById("update-overlay").style.display = "block";
+}
+  
+function overlayOffUpdate() {
+	document.getElementById("update-overlay").style.display = "none";
+}
+
+function overlayOnDelete() {
+	document.getElementById("delete-overlay").style.display = "block";
+}
+  
+function overlayOffDelete() {
+	document.getElementById("delete-overlay").style.display = "none";
 }
 
 function addContact() {
-	let firstName = document.getElementById("firstname").value;
-	let lastName = document.getElementById("lastname").value;
-	let email = document.getElementById("email").value;
-	let phone = document.getElementById("phone").value;
-	let date = document.getElementById("date").value;
+	let firstName = document.getElementById("a-firstname").value;
+	let lastName = document.getElementById("a-lastname").value;
+	let email = document.getElementById("a-email").value;
+	let phone = document.getElementById("a-phone").value;
+	let date = document.getElementById("a-date").value;
 	document.getElementById("addContactResult").innerHTML = "";
 
 	if (firstName === "" || lastName === "") {
@@ -164,6 +180,7 @@ function searchContact() {
 	
 }
 
+// Function obv not complete
 function deleteContact() {
 	
 }

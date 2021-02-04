@@ -26,10 +26,10 @@
     <div class="nav">
       <input type="text" placeholder="Search...">
       <button type="submit"><i class="fa fa-search"></i></button>
-      <button type="button" onclick="overlayOn();">Add</button>
-      <a href="">Update</a>
-      <a href="">Delete</a>
-      <a href="" onclick="doLogout()">Logout</a>
+      <button type="button" onclick="overlayOnAdd();">Add</button>
+      <button type="button" onclick="overlayOnUpdate();">Update</button>
+      <button type="button" onclick="overlayOnDelete();">Delete</button>
+      <button type="button" onclick="doLogout()">Logout</button>
     </div>
 
     <div class="container pad">
@@ -56,9 +56,8 @@
         </button>
       </div>
 
-      <!-- Add contact overlay -->
-      <div id="overlay">
-        <button type="button" class="close-btn" onclick="overlayOff();"><i class="fa fa-window-close"></i></button>
+      <div id="add-overlay" class="overlay">
+        <button type="button" class="close-btn" onclick="overlayOffAdd();"><i class="fa fa-window-close"></i></button>
         <div class="container pad">
           <div class="row justify-content-center">
             <div class="col-md-8">
@@ -66,30 +65,92 @@
               <div class="text">Add Contact</div>
               <br>
               <div class="form-group">
-                <label class="login-text" for="firstname">First Name:</label>
-                <input type="text" class="form-control" id="firstname" placeholder="Enter first name">
+                <label class="login-text" for="a-firstname">First Name:</label>
+                <input type="text" class="form-control" id="a-firstname" placeholder="Enter first name">
               </div>
               <div class="form-group">
-                <label class="login-text" for="lastname">Last Name:</label>
-                <input type="text" class="form-control" id="lastname" placeholder="Enter last name">
+                <label class="login-text" for="a-lastname">Last Name:</label>
+                <input type="text" class="form-control" id="a-lastname" placeholder="Enter last name">
               </div>
               <div class="form-group">
-                <label class="login-text" for="email">Email Address:</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email">
+                <label class="login-text" for="a-email">Email Address:</label>
+                <input type="email" class="form-control" id="a-email" placeholder="Enter email">
               </div>
               <div class="form-group">
-                <label class="login-text" for="phone">Phone Number:</label>
-                <input type="tel" class="form-control" id="phone" placeholder="Enter phone">
+                <label class="login-text" for="a-phone">Phone Number:</label>
+                <input type="tel" class="form-control" id="a-phone" placeholder="Enter phone">
               </div>
               <div class="form-group">
-                <label class="login-text" for="date">Date:</label>
-                <input type="date" class="form-control" id="date" placeholder="Enter date">
+                <label class="login-text" for="a-date">Date:</label>
+                <input type="date" class="form-control" id="a-date" placeholder="Enter date">
               </div>
             </div>
           </div>
           <div class="row justify-content-center">
             <button type="submit" class="add-btn" onclick="addContact();"><i class="fa fa-user-plus"></i></button>
             <span class="login-text" id="addContactResult"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="update-overlay" class="overlay">
+        <button type="button" class="close-btn" onclick="overlayOffUpdate();"><i class="fa fa-window-close"></i></button>
+        <div class="container pad">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <br>
+              <div class="text">Update Contact</div>
+              <br>
+              <div class="form-group">
+                <label class="login-text" for="u-firstname">First Name:</label>
+                <input type="text" class="form-control" id="u-firstname" placeholder="Enter first name">
+              </div>
+              <div class="form-group">
+                <label class="login-text" for="u-lastname">Last Name:</label>
+                <input type="text" class="form-control" id="u-lastname" placeholder="Enter last name">
+              </div>
+              <div class="form-group">
+                <label class="login-text" for="u-email">Email Address:</label>
+                <input type="email" class="form-control" id="u-email" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label class="login-text" for="u-phone">Phone Number:</label>
+                <input type="tel" class="form-control" id="u-phone" placeholder="Enter phone">
+              </div>
+              <div class="form-group">
+                <label class="login-text" for="u-date">Date:</label>
+                <input type="date" class="form-control" id="u-date" placeholder="Enter date">
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <button type="submit" class="add-btn" onclick=""><i class="fa fa-user-plus"></i></button>
+            <span class="login-text" id="updateContactResult"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="delete-overlay" class="overlay">
+        <button type="button" class="close-btn" onclick="overlayOffDelete();"><i class="fa fa-window-close"></i></button>
+        <div class="container pad">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <br>
+              <div class="text">Delete Contact</div>
+              <br>
+              <div class="form-group">
+                <label class="login-text" for="d-firstname">First Name:</label>
+                <input type="text" class="form-control" id="d-firstname" placeholder="Enter first name">
+              </div>
+              <div class="form-group">
+                <label class="login-text" for="d-lastname">Last Name:</label>
+                <input type="text" class="form-control" id="d-lastname" placeholder="Enter last name">
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <button type="submit" class="add-btn" onclick=""><i class="fa fa-user-plus"></i></button>
+            <span class="login-text" id="deleteContactResult"></span>
           </div>
         </div>
       </div>

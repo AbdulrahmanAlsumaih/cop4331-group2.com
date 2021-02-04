@@ -51,7 +51,7 @@ function doLogin() {
 // Function needs to be fixed
 function doLogout() {
 	userId = 0;
-	
+	let url = urlBase + '/logout.' + extension;
 	window.location.href = "index.html";
 }
 
