@@ -17,6 +17,10 @@ function createTable() {
   let save = document.getElementById("header");
   document.getElementById("create-table").innerHTML = '';
   document.getElementById("create-table").appendChild(save);
+  
+  	// use the getcontact() function to retrieve the contacts for this page
+	contact = getContact(counter);
+
 	/*
 		This nested loop dynamically created table elements. 'tr' is a row and 'td' is each colummn (first, last, phone) in the row.
 		After creating all of the elements of the row, appendChild() is called to add the element of the end of the table.
@@ -112,39 +116,50 @@ function addContact() {
 }
 
 // Function not complete
-function getContact() {
-	//document.getElementById("colorSearchResult").innerHTML = "";
+function getContact(counter) {
 	
 	let contacts = [];
+	let contact = [];
 	
-	let jsonPayload = '{"pagenumber" : "' + 1 + '}';
+	let jsonPayload = '{"pagenumber" : "' + counter + '}';
 	let url = urlBase + '/getcontacts.' + extension;
 	
 	let xhr = new XMLHttpRequest();
-	xhr.open("GET", url, true);
+	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	
 	try {
+		// Send JSON
+		xhr.send(jsonPayload);
+		
+		// Recieve response
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				//document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
-				let jsonObject = JSON.parse( xhr.responseText );
+
+				// Parse the jsonObject
+				let jsonObject = JSON.parse(xhr.responseText );
 				
-				for( let i=0; i<jsonObject.results.length; i++ ) {
-					contacts.push(jsonObject.results[i]);
-					if( i < jsonObject.results.length - 1 ) {
-						contacts += "<br />\r\n";
-					}
+				// For each contact in the response
+				for(var i in json_data) {
+					// Append the contact information to the singular contact object
+					contact.push(i['firstname'];
+					contact.push(i['lastname'];
+					contact.push(i['phone'];
+					contact.push(i['email'];
+					contact.push(i['date'];
+					contact.push(i['num'];
 				}
 				
-				createTable(contacts);
+				// Push the contact array into the big contacts array
+				contacts.push(contact);
 			}
 		};
-		xhr.send(jsonPayload);
-
+		
 	} catch(err) {
 		document.getElementById("getContactResult").innerHTML = err.message;
 	}
+	
+	return contacts;
 	
 }
 
