@@ -1,23 +1,30 @@
 let urlBase = 'http://www.cop4331-group2.com/api';
 let extension = 'php';
 let counter = 1;
+let contacts_per_page = 3;
+let contact = [["1", "Smith", "1-234-567-8910"], ["2", "last", "number"], ["3", "Smith", "1-234-567-8910"], ["4", "last", "number"], ["5", "Smith", "1-234-567-8910"], ["6", "last", "number"], ["7", "Smith", "1-234-567-8910"], ["8", "last", "number"], ["9", "Smith", "1-234-567-8910"], ["10", "last", "number"]];
+let num_pages = Math.ceil(contact.length / contacts_per_page);
 
 function createTable() {
-  //let email = document.getElementById("email").value;
-  //let pass = document.getElementById("pass").value;
-  let length = counter * 2;
-  let contact = [["1", "Smith", "1-234-567-8910"], ["2", "last", "number"], ["3", "Smith", "1-234-567-8910"], ["4", "last", "number"], ["5", "Smith", "1-234-567-8910"], ["6", "last", "number"], ["7", "Smith", "1-234-567-8910"], ["8", "last", "number"], ["9", "Smith", "1-234-567-8910"], ["10", "last", "number"]];
+
+  let length = counter * contacts_per_page;
   let tr;
   let td;
+  	/*
+		The save variable holds the header element (the very top row of the table). The next line "...innerHTML = '' " resets the entirety of the table.
+		The final line "...appendChild(save)" adds the header element back to the table. This is done to clear the table elements when the user wants to change pages.
+	*/
   let save = document.getElementById("header");
-  
   document.getElementById("create-table").innerHTML = '';
   document.getElementById("create-table").appendChild(save);
-  
-  for (let i = length - 2; i < length; i++) {
+	/*
+		This nested loop dynamically created table elements. 'tr' is a row and 'td' is each colummn (first, last, phone) in the row.
+		After creating all of the elements of the row, appendChild() is called to add the element of the end of the table.
+  	*/
+  for (let i = length - contacts_per_page; i < length; i++) {
     tr = document.createElement('tr');
 	
-	for (let j = 0; j < 3; j ++) {
+	for (let j = 0; j < contact[i].length; j ++) {
       td = document.createElement('td');
       td.innerHTML = contact[i][j];
       tr.appendChild(td);
@@ -30,12 +37,12 @@ function createTable() {
 function changePage(change) {
 	if (change == 1) {
 		counter++;
-		if (counter > 5)
+		if (counter > num_pages)
 			counter = 1;
 	} else if (change == -1) {
 		counter--;
 		if (counter < 1)
-			counter = 5;
+			counter = num_pages;
 	}
 }
 
