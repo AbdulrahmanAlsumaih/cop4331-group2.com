@@ -142,12 +142,12 @@ function getContact(counter) {
 				// For each contact in the response
 				for(var i in json_data) {
 					// Append the contact information to the singular contact object
-					contact.push(i['firstname'];
-					contact.push(i['lastname'];
-					contact.push(i['phone'];
-					contact.push(i['email'];
-					contact.push(i['date'];
-					contact.push(i['num'];
+					contact.push(i['firstname']);
+					contact.push(i['lastname']);
+					contact.push(i['phone']);
+					contact.push(i['email']);
+					contact.push(i['date']);
+					contact.push(i['num']);
 				}
 				
 				// Push the contact array into the big contacts array
