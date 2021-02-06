@@ -52,7 +52,7 @@
 				$contact = "{firstname:'" . $row['firstname'] . "', lastname:'" . $row['lastname'] . "', email:'" . $row['email'] . "', phone:" . $row['phone'] . ", date:" . $row['date'] . ", num:" . $row['num'] . "}";
 				
 				// Add it to the big array
-				$contacts = $contacts . "contact" . $i . ":'" . $contact . "'," ;
+				$contacts = $contacts . $i . ":'" . $contact . "'," ;
 				
 				// Increment the contact number
 				$i += 1;
