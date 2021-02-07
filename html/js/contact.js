@@ -2,14 +2,12 @@ let urlBase = 'http://www.cop4331-group2.com/api';
 let extension = 'php';
 let counter = 1;
 let contacts_per_page = 3;
-let contact = [["1", "Smith", "1-234-567-8910"], ["2", "last", "number"], ["3", "Smith", "1-234-567-8910"], ["4", "last", "number"], ["5", "Smith", "1-234-567-8910"], ["6", "last", "number"], ["7", "Smith", "1-234-567-8910"], ["8", "last", "number"], ["9", "Smith", "1-234-567-8910"], ["10", "last", "number"]];
-let num_pages = Math.ceil(contact.length / contacts_per_page);
+let contact = [];
+//let contact = [["1", "Smith", "1-234-567-8910"], ["2", "last", "number"], ["3", "Smith", "1-234-567-8910"], ["4", "last", "number"], ["5", "Smith", "1-234-567-8910"], ["6", "last", "number"], ["7", "Smith", "1-234-567-8910"], ["8", "last", "number"], ["9", "Smith", "1-234-567-8910"], ["10", "last", "number"]];
+//let num_pages = Math.ceil(contact.length / contacts_per_page);
 
 function createTable() {
 
-  let length = counter * contacts_per_page;
-  let tr;
-  let td;
   	/*
 		The save variable holds the header element (the very top row of the table). The next line "...innerHTML = '' " resets the entirety of the table.
 		The final line "...appendChild(save)" adds the header element back to the table. This is done to clear the table elements when the user wants to change pages.
@@ -18,27 +16,75 @@ function createTable() {
   document.getElementById("create-table").innerHTML = '';
   document.getElementById("create-table").appendChild(save);
   
-  	// use the getcontact() function to retrieve the contacts for this page
-	contact = getContact(counter);
+	contact = [];
+	getContacts(drawTable);
+}
 
-	/*
-		This nested loop dynamically created table elements. 'tr' is a row and 'td' is each colummn (first, last, phone) in the row.
-		After creating all of the elements of the row, appendChild() is called to add the element of the end of the table.
-  	*/
-  for (let i = length - contacts_per_page; i < length; i++) {
-    tr = document.createElement('tr');
-	
-	for (let j = 0; j < contact[i].length; j ++) {
-      td = document.createElement('td');
-      td.innerHTML = contact[i][j];
-      tr.appendChild(td);
+function getContacts(callback){
+	// Code to get contacts from DB
+	let jsonPayload = '{"pagenumber":"' + counter + '}';
+	let url = urlBase + '/getcontacts.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try {
+		// Send JSON
+		xhr.send(jsonPayload);
+
+		// Recieve response
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+
+				// Parse the jsonObject
+				let jsonObject = JSON.parse(xhr.responseText );
+
+				// Convert the jsonObject to an array
+				values = Object.values(jsonObject);
+
+				// For each contact in the response
+				for(i=0; i < values.length; i++) {
+
+					// Append the contact information to the contacts object (ugly line time)
+					contact.push(new Array(values[i]['firstname'],values[i]['lastname'],values[i]['phone'],values[i]['email'],values[i]['date'],values[i]['num']));
+				}
+				console.log(contact);
+				callback();
+		
+			}
+		};
+
+	} catch(err) {
+	document.getElementById("getContactResult").innerHTML = err.message;
 	}
+	
+}
 
-    document.getElementById("create-table").appendChild(tr);
-  }
+function drawTable(){
+	let length = counter * contacts_per_page;
+	let tr;
+	let td;
+	
+	/*
+	This nested loop dynamically created table elements. 'tr' is a row and 'td' is each colummn (first, last, phone) in the row.
+	After creating all of the elements of the row, appendChild() is called to add the element of the end of the table.
+	*/
+	for (let i = length - contacts_per_page; i < length; i++) {
+		tr = document.createElement('tr');
+		
+		for (let j = 0; j < contact[i].length; j ++) { // -1 here because the "num" value is secret
+		  td = document.createElement('td');
+		  td.innerHTML = contact[i][j];
+		  tr.appendChild(td);
+		}
+
+		document.getElementById("create-table").appendChild(tr);
+	}
 }
 
 function changePage(change) {
+	
 	if (change == 1) {
 		counter++;
 		if (counter > num_pages)
@@ -115,53 +161,7 @@ function addContact() {
 	
 }
 
-// Function not complete
-function getContact(counter) {
-	
-	let contacts = [];
-	let contact = [];
-	
-	let jsonPayload = '{"pagenumber" : "' + counter + '}';
-	let url = urlBase + '/getcontacts.' + extension;
-	
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	
-	try {
-		// Send JSON
-		xhr.send(jsonPayload);
-		
-		// Recieve response
-		xhr.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
 
-				// Parse the jsonObject
-				let jsonObject = JSON.parse(xhr.responseText );
-				
-				// For each contact in the response
-				for(var i in json_data) {
-					// Append the contact information to the singular contact object
-					contact.push(i['firstname']);
-					contact.push(i['lastname']);
-					contact.push(i['phone']);
-					contact.push(i['email']);
-					contact.push(i['date']);
-					contact.push(i['num']);
-				}
-				
-				// Push the contact array into the big contacts array
-				contacts.push(contact);
-			}
-		};
-		
-	} catch(err) {
-		document.getElementById("getContactResult").innerHTML = err.message;
-	}
-	
-	return contacts;
-	
-}
 
 
 // Function not complete
