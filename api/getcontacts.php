@@ -2,6 +2,7 @@
 	$inData = getRequestInfo();
 	session_start();
 	$num = 0;
+	
 	// Check if user is logged in
 	if ($_SESSION['id'] == NULL)
 	{
@@ -22,17 +23,18 @@
 	else
 	{
 		// Use the page number to determine which records to get
-		$lastvalue = $inData['pagenumber'] * 5;
-		$firstvalue = $lastvalue - 5;
+		$lastvalue = (intval($inData["pagenumber"]) - 1)  * 5;
+		$offset = 5;
 		
 		// Retrieve the data from the db
-		$sql = "select num,firstname,lastname,email,phone,date from contacts where id = " . $_SESSION['id'] . " limit " . $firstvalue . "," . $lastvalue . ";";
+		$sql = "select num,firstname,lastname,email,phone,date from contacts where id = " . $_SESSION['id'] . " limit " . $lastvalue . "," . $offset . ";";
 		
 		$result = $conn->query($sql);
 		
 		if( $result == NULL )
 		{
 			returnWithError($conn->error, -1 );
+			error_log("!!!!ERROR CONNECTING TO DATABASE!!!");
 			die();
 		}
 		
@@ -49,10 +51,10 @@
 			while($row = $result->fetch_assoc()) {
 				
 				// Create a contact
-				$contact = "{firstname:'" . $row['firstname'] . "', lastname:'" . $row['lastname'] . "', email:'" . $row['email'] . "', phone:" . $row['phone'] . ", date:" . $row['date'] . ", num:" . $row['num'] . "}";
+				$contact = '{"firstname":"' . $row['firstname'] . '", "lastname":"' . $row['lastname'] . '", "email":"' . $row['email'] . '", "phone":"' . $row['phone'] . '", "date":"' . $row['date'] . '","num":"' . $row['num'] . '"}';
 				
 				// Add it to the big array
-				$contacts = $contacts . $i . ":'" . $contact . "'," ;
+				$contacts = $contacts . '"contact'. $i . '":' . $contact . ',' ;
 				
 				// Increment the contact number
 				$i += 1;
@@ -71,8 +73,8 @@
 		
 		// If nothing found, return an error
 		else {
-			$conn->close();
 			returnWithError("No results found", 0);
+			$conn->close();
 		}
 	}
 	
