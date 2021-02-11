@@ -5,6 +5,14 @@
     $searchResults = "";
     $searchCount = 0;
     
+    //gets the open session
+    session_start();
+    //if there is no previous session ERROR
+    if($_SESSION['id'] == NULL)
+    {
+        returnWithError('ERROR: User must be logged in');
+        exit();
+    }
     // connect to the Database.
     $conn = new mysqli("localhost", "db_user", "123", "contact_db");
     // return error if connection fail to establish.
