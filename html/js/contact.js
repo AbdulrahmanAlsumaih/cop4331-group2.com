@@ -2,14 +2,15 @@ let urlBase = 'http://www.cop4331-group2.com/api';
 let extension = 'php';
 let counter = 1;
 let contacts_per_page = 5;
-let contact = [];
+let contact = [["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"]];
 let num_pages = 1;
 
 // Main function to create the table, grabs the contacts and then creates the table
 function createTable() {
 
   // Find the number of pages
-	getContactNum(updateCounter, 0);
+	drawTable();
+	//getContactNum(updateCounter, 0);
 	
 }
 
@@ -100,7 +101,9 @@ function drawTable(){
 			  td.innerHTML = contact[i][j];
 			  tr.appendChild(td);
 			}
-
+			td = document.createElement('td');
+			td.innerHTML = "<img src=\"img/edit.png\" onclick=\"overlayOnUpdate();\" class=\"edit-button\">"
+			tr.appendChild(td);
 			document.getElementById("create-table").appendChild(tr);
 		}
 	}

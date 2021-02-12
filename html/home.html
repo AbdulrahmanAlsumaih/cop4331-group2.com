@@ -43,7 +43,10 @@
           <tr id="header" style="background-color:rgb(48, 125, 246);" class="table-title-text">
             <th>First</th>
             <th>Last</th>
+            <th>Email</th>
             <th>Phone</th>
+            <th>Date</th>
+            <th>Edit</th>
           </tr>
         </table>
       </div>
@@ -92,7 +95,6 @@
           </div>
         </div>
       </div>
-
       <div id="update-overlay" class="overlay">
         <button type="button" class="close-btn" onclick="overlayOffUpdate();"><i class="fa fa-window-close"></i></button>
         <div class="container pad">
@@ -120,6 +122,9 @@
               <div class="form-group">
                 <label class="login-text" for="u-date">Date:</label>
                 <input type="date" class="form-control" id="u-date" placeholder="Enter date">
+              </div>
+              <div>
+                <button class="btn btn-danger" style="width:20%">Delete Contact</button>
               </div>
             </div>
           </div>
