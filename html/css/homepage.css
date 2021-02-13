@@ -208,6 +208,7 @@ a:hover {
 
 .nav input[type="text"] {
   margin: 10px 10px;
+  padding-right: 15%;
 }
 
 @media screen and (max-width: 600px) {

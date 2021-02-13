@@ -227,7 +227,12 @@ function addContact() {
 	document.getElementById("addContactResult").innerHTML = "";
 
 	if (firstName === "" || lastName === "") {
-		document.getElementById("addContactResult").innerHTML = "Please add a full name";
+		document.getElementById("addContactResult").innerHTML = "Please add a full name.";
+		return;
+	}
+
+	if (isNaN(phone)) {
+		document.getElementById("addContactResult").innerHTML = "Please enter a valid phone number.";
 		return;
 	}
 	
