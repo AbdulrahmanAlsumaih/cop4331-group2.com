@@ -91,6 +91,8 @@
             <button type="submit" class="add-btn" onclick="addContact();">
               Add <i class="fa fa-user-plus"></i>
             </button>
+          </div>
+          <div class="row justify-content-center pad-top">
             <span class="login-text" id="addContactResult"></span>
           </div>
         </div>
@@ -126,34 +128,28 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-sm-3">
-            <button type="submit" class="add-btn" onclick="overlayOffUpdate(); completeUpdate();">
+          <div class="row justify-content-center pad-top">
+            <button type="submit" class="add-btn btn-mgn" onclick="overlayOffUpdate(); completeUpdate();">
               Confirm <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </button>
+            <button class="del-btn btn-mgn" onclick="overlayOnDelete();">
+              Delete <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
           </div>
-          <div class="col-sm-3">
-            <div>
-              <button class="btn btn-danger" onclick="overlayOnDelete();">Delete Contact</button>
-            </div>
+          <div class="row justify-content-center">
+            <span class="login-text" id="updateContactResult"></span>
           </div>
-          <span class="login-text" id="updateContactResult"></span>
         </div>
       </div>
 
       <div id="delete-overlay" class="del-overlay">
         <div class="container">
-          <br>
-          <br>
-          <br>
-          <br>
-          <div class="row justify-content-center pad">
+          <div class="row justify-content-center del-confirm-pad">
             <div class="text">Are you sure you want to delete this contact?</div>
           </div>
-          <div class="row justify-content-center">
-              <button type="button" class="del-btn btn-light btn-lg" onclick="overlayOffDelete();">No</button>
-              <button type="submit" class="del-btn btn-danger btn-lg" onclick="overlayOffDelete();">Yes</button>
+          <div class="row justify-content-center pad-top">
+              <button type="button" class="btn-mgn no-btn" onclick="overlayOffDelete();">No</button>
+              <button type="submit" class="btn-mgn del-btn" onclick="overlayOffDelete(); overlayOffUpdate();">Yes</button>
           </div>
         </div>
       </div>

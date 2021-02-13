@@ -3,7 +3,7 @@
 }
 
 .background-img {
-  background-image: url(../img/background.jpg);
+  background-image: url(../img/background2.jpg);
   height: 400px;
   background-repeat: no-repeat;
   background-position: center;
@@ -118,7 +118,7 @@ tr {
 }
 
 button:focus {
-  border: none;
+  /* border: none; */
   outline: none;
 }
 
@@ -213,7 +213,7 @@ input:focus {
   height: 100%; /* Full height (cover the whole page) */
   top: 0%;
   left: 0%;
-  background-color: rgba(0, 0, 0, 0.88); /* Black background with opacity */
+  background-color: rgba(0, 0, 0, 0.9); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
 }
 
@@ -229,18 +229,17 @@ input:focus {
 }
 
 .add-btn {
-  border: none;
+  border: 2px solid white;
+  border-radius: 8px;
   background-color: inherit;
   color: white;
+  padding: 0px 10px;
   font-size: 28px;
+  transition-duration: 0.4s;
 }
 
 .add-btn:hover {
-  color: rgb(0, 139, 252);
-}
-
-.add-btn:active {
-  color: rgb(0, 84, 153);
+  background-color: rgb(0, 139, 252);
 }
 
 .close-btn {
@@ -257,7 +256,36 @@ input:focus {
 }
 
 .del-btn {
-  margin: 10px 10px;
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 0px 20px;
+  background-color: inherit;
+  color: white;
+  font-size: 28px;
+  transition-duration: 0.4s;
+}
+
+.del-btn:hover {
+  background-color: #ff0000;
+}
+
+.no-btn {
+  border: 2px solid white;
+  border-radius: 8px;
+  background-color: inherit;
+  color: white;
+  padding: 0px 23px;
+  font-size: 28px;
+  transition-duration: 0.4s;
+}
+
+.no-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.btn-mgn {
+  margin: 10px 15px;
 }
 
 .edit-button {
@@ -265,4 +293,8 @@ input:focus {
   width: 20px;
   cursor: pointer;
   padding-bottom: 5px;
+}
+
+.del-confirm-pad {
+  padding-top: 400px;
 }
