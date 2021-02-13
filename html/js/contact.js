@@ -1,10 +1,9 @@
-let urlBase = 'http://www.cop4331-group2.com/api';
-let extension = 'php';
+
 let counter = 1;
 let contacts_per_page = 5;
 let contact = [["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"]];
 let num_pages = 1;
-
+let universal_id;
 // Main function to create the table, grabs the contacts and then creates the table
 function createTable() {
 
@@ -95,15 +94,16 @@ function drawTable(){
 	{
 		for (let i = 0; i < contact.length; i++) {
 			tr = document.createElement('tr');
-			
+			tr.id = "num" + String(((counter - 1) * contacts_per_page) + i + 1);
 			for (let j = 0; j < contact[i].length; j ++) { 
 			  td = document.createElement('td');
 			  td.innerHTML = contact[i][j];
 			  tr.appendChild(td);
 			}
 			td = document.createElement('td');
-			td.innerHTML = "<img src=\"img/edit.png\" onclick=\"overlayOnUpdate();\" class=\"edit-button\">"
+			td.innerHTML = "<img id= 'edit"+ String(((counter - 1) * contacts_per_page) + i + 1)+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
 			tr.appendChild(td);
+			console.log(tr.id);
 			document.getElementById("create-table").appendChild(tr);
 		}
 	}
@@ -184,8 +184,26 @@ function overlayOffAdd() {
 	document.getElementById("add-overlay").style.display = "none";
 }
 
-function overlayOnUpdate() {
+function overlayOnUpdate(id) {
 	document.getElementById("update-overlay").style.display = "block";
+	universal_id = id.substring(4);
+}
+
+function completeUpdate()
+{
+	let arr = [	document.getElementById("u-firstname"), document.getElementById("u-lastname"), document.getElementById("u-email"), 
+				document.getElementById("u-phone"), document.getElementById("u-date")];
+	document.getElementById("num"+universal_id).innerHTML = '';
+	tr = document.getElementById("num"+universal_id);
+	for (let i = 0; i < arr.length; i++) {
+		td = document.createElement('td');
+		td.innerHTML = arr[i].value;
+		tr.appendChild(td);
+	}
+	td = document.createElement('td');
+	td.innerHTML = "<img id= 'edit"+ String(universal_id)+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">";
+	tr.appendChild(td);
+	overlayOffUpdate();
 }
   
 function overlayOffUpdate() {
