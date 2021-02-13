@@ -173,10 +173,10 @@ button:focus {
 
 a {
   color: rgb(255, 255, 255);
-  transition-duration: 0.4s;
 }
 
 a:hover {
+  transition-duration: 0.4s;
   color: rgb(175, 175, 175);
   text-decoration: none;
   text-shadow: 0px 0px 20px black;
@@ -184,6 +184,7 @@ a:hover {
 
 .card {
   box-shadow: 0 0 25px black;
+  border-radius: 20px;
 }
 
 .nav {
@@ -258,10 +259,10 @@ input:focus {
   padding: 8px 45px;
   font-size: 23px;
   box-shadow: 0px 0px 8px black;
-  transition-duration: 0.4s;
 }
 
 .login-btn:hover {
+  transition-duration: 0.4s;
   background-color: rgb(0, 82, 177);
   box-shadow: 0px 0px 20px black;
 }
@@ -273,10 +274,10 @@ input:focus {
   color: white;
   padding: 0px 10px;
   font-size: 28px;
-  transition-duration: 0.4s;
 }
 
 .add-btn:hover {
+  transition-duration: 0.4s;
   background-color: rgb(0, 139, 252);
 }
 
@@ -300,10 +301,10 @@ input:focus {
   background-color: inherit;
   color: white;
   font-size: 28px;
-  transition-duration: 0.4s;
 }
 
 .del-btn:hover {
+  transition-duration: 0.4s;
   background-color: #ff0000;
 }
 
@@ -314,10 +315,10 @@ input:focus {
   color: white;
   padding: 0px 23px;
   font-size: 28px;
-  transition-duration: 0.4s;
 }
 
 .no-btn:hover {
+  transition-duration: 0.4s;
   background-color: white;
   color: black;
 }
