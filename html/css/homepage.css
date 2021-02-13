@@ -213,8 +213,19 @@ input:focus {
   height: 100%; /* Full height (cover the whole page) */
   top: 0%;
   left: 0%;
-  background-color: rgba(0, 0, 0, 0.85); /* Black background with opacity */
+  background-color: rgba(0, 0, 0, 0.88); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+.del-overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0%;
+  left: 0%;
+  background-color: rgba(0, 0, 0, 0.95); /* Black background with opacity */
+  z-index: 2;
 }
 
 .add-btn {
@@ -243,6 +254,10 @@ input:focus {
 
 .close-btn:hover {
   color: rgb(253, 62, 62);
+}
+
+.del-btn {
+  margin: 10px 10px;
 }
 
 .edit-button {
