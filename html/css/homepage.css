@@ -246,8 +246,8 @@ input:focus {
 }
 
 .edit-button {
-  height:20px;
-  width:20px;
+  height: 20px;
+  width: 20px;
   cursor: pointer;
   padding-bottom: 5px;
 }
