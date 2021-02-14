@@ -149,17 +149,14 @@ function drawTable(){
 		for (let i = 0; i < contact.length; i++) {
 			tr = document.createElement('tr');
 			tr.id = "num" + String(contact[i][5]); 
-			console.log(tr.id);
 			for (let j = 0; j < header.length; j ++) { 
 			  td = document.createElement('td');
 			  td.innerHTML = contact[i][j];
 			  td.id = header[j] + String(contact[i][5]);
-			  console.log(td.id);
 			  tr.appendChild(td);
 			}
 			td = document.createElement('td');
 			td.innerHTML = "<img id= 'edit"+ String(contact[i][5])+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
-			console.log(td.id);
 			tr.appendChild(td);
 			document.getElementById("create-table").appendChild(tr);
 		}
@@ -270,12 +267,16 @@ function overlayOnUpdate(id) {
 		firstName = document.getElementById("test"+String(i+1));
 		firstName.innerHTML = '';
 		lab = document.createElement('label');
-		lab.class = "login-text";
-		lab.for = arr[i][0];
-		lab.innerText = arr[i][1];
+		/*
+			Equivalent to: <label class="login-text" for="u-phone">Phone Number:</label>
+		*/
+		lab.class = "login-text"; lab.for = arr[i][0]; lab.innerText = arr[i][1];
 		firstName.appendChild(lab);
 		inp = document.createElement('input');
-		inp.type = "text";inp.class = "form-control"; inp.id=arr[i][0];inp.placeholder="Enter "+arr[i][2];
+		/*
+			Equivalent to: <input type="tel" class="form-control" id="u-phone" placeholder="Enter phone">
+		*/
+		inp.type = "text"; inp.class = "form-control"; inp.id = arr[i][0]; inp.placeholder = "Enter " + arr[i][2];
 		inp.value = document.getElementById(header[i] + universal_id).innerHTML;
 		firstName.appendChild(inp);
 	}
@@ -286,17 +287,9 @@ function completeUpdate()
 {
 	let arr = [	document.getElementById("u-firstname"), document.getElementById("u-lastname"), document.getElementById("u-email"), 
 				document.getElementById("u-phone"), document.getElementById("u-date")];
-	document.getElementById("num"+universal_id).innerHTML = '';
-	tr = document.getElementById("num"+universal_id);
 	for (let i = 0; i < arr.length; i++) {
-		td = document.createElement('td');
-		td.innerHTML = arr[i].value;
-		td.id = header[j] + String(universal_id);
-		tr.appendChild(td);
+		console.log(arr[i].value);
 	}
-	td = document.createElement('td');
-	td.innerHTML = "<img id= 'edit"+ String(universal_id)+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">";
-	tr.appendChild(td);
 	overlayOffUpdate();
 }
   
