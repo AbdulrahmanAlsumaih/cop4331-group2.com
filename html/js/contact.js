@@ -260,14 +260,13 @@ function overlayOffAdd() {
 
 function overlayOnUpdate(id) {
 	universal_id = id.substring(4);
-	let arr = [	["u-firstname", "First Name", "first name"], ["u-lastname", "Last Name", "last name"], ["u-phone", "Phone Number", "phone"],
+	let arr = [["u-firstname", "First Name", "first name"], ["u-lastname", "Last Name", "last name"], ["u-phone", "Phone Number", "phone"],
 				["u-email", "Email Address", "email"], ["u-date", "Date", "date"]];
-	let firstname;
+	let firstName;
 	let lab;
 	let inp;
-	for (int i = 0; i < header.length; i++)
+	for (let i = 0; i < header.length; i++)
 	{
-
 		firstName = document.getElementById("test"+String(i+1));
 		firstName.innerHTML = '';
 		lab = document.createElement('label');
