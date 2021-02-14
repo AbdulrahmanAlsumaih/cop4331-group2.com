@@ -145,19 +145,20 @@ function drawTable(){
 	// Otherwise make the contacts table
 	else
 	{
-		for (let i = 0; i < contact.length; i++) {
+
+		for (let i = 0; i < contacts_per_page; i++) {
 			tr = document.createElement('tr');
-			tr.id = "num" + String(contact[i][5]); 
+			tr.id = "num" + String(contact[i+(contacts_per_page * (counter - 1))][5]); 
 			console.log(tr.id);
 			for (let j = 0; j < header.length; j ++) { 
 			  td = document.createElement('td');
 			  td.innerHTML = contact[i][j];
-			  td.id = header[i] + String(contact[i][5]);
+			  td.id = header[i] + String(contact[i+(contacts_per_page * (counter - 1))][5]);
 			  console.log(td.id);
 			  tr.appendChild(td);
 			}
 			td = document.createElement('td');
-			td.innerHTML = "<img id= 'edit"+ String(contact[i][5])+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
+			td.innerHTML = "<img id= 'edit"+ String(contact[i+(contacts_per_page * (counter - 1))][5])+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
 			console.log(tr.id);
 			tr.appendChild(td);
 			document.getElementById("create-table").appendChild(tr);
