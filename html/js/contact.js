@@ -159,7 +159,7 @@ function drawTable(){
 			}
 			td = document.createElement('td');
 			td.innerHTML = "<img id= 'edit"+ String(contact[i][5])+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
-			console.log(tr.id);
+			console.log(td.id);
 			tr.appendChild(td);
 			document.getElementById("create-table").appendChild(tr);
 		}
@@ -259,7 +259,41 @@ function overlayOffAdd() {
 }
 
 function overlayOnUpdate(id) {
+	let firstName = document.getElementById("test1");
+	let lastName = document.getElementById("test2");
+	let phoneNumber = document.getElementById("test3");
+	let emailAddress = document.getElementById("test4");
+	let date = document.getElementById("test5");
+	let lab = document.createElement('label');
+	lab.class = "login-text";
+	lab.for = "u-firstname";
+	lab.innerText = "First Name";
+	lab.value = document.getElementById("first" + universal_id);
+	firstName.appendChild(lab);
+	let inp = document.createElement('input');
+	inp.type = "text";inp.class = "form-control"; inp.id="u-firstname";inp.placeholder="Enter first name";
+	firstName.appendChild(inp);
+	document.getElementById("test1").appendChild(firstName);
 	document.getElementById("update-overlay").style.display = "block";
+	universal_id = id.substring(4);
+}
+
+function completeUpdate()
+{
+	let arr = [	document.getElementById("u-firstname"), document.getElementById("u-lastname"), document.getElementById("u-email"), 
+				document.getElementById("u-phone"), document.getElementById("u-date")];
+	document.getElementById("num"+universal_id).innerHTML = '';
+	tr = document.getElementById("num"+universal_id);
+	for (let i = 0; i < arr.length; i++) {
+		td = document.createElement('td');
+		td.innerHTML = arr[i].value;
+		td.id = header[j] + String(universal_id);
+		tr.appendChild(td);
+	}
+	td = document.createElement('td');
+	td.innerHTML = "<img id= 'edit"+ String(universal_id)+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">";
+	tr.appendChild(td);
+	overlayOffUpdate();
 }
   
 function overlayOffUpdate() {
