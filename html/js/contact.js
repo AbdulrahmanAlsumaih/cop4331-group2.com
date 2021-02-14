@@ -146,7 +146,7 @@ function drawTable(){
 	else
 	{
 
-		for (let i = 0; i < contacts_per_page; i++) {
+		for (let i = 0; i < contact.length; i++) {
 			tr = document.createElement('tr');
 			tr.id = "num" + String(contact[i+(contacts_per_page * (counter - 1))][5]); 
 			console.log(tr.id);
