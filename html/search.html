@@ -21,11 +21,11 @@
     <title>EzContact</title>
   </head>
 
-  <body class="background background-img" onload="createTable(0)">
+  <body class="background background-img" onload="createSearchTable(1)">
 
     <div class="nav">
-      <input type="text" name="search" placeholder="Search...">
-      <button type="submit" onclick="searchContact();"><i class="fa fa-search"></i></button>
+      <input type="text" placeholder="Search...">
+      <button type="submit"><i class="fa fa-search"></i></button>
       <button type="button" onclick="overlayOnAdd();">Add</button>
       <button type="button" onclick="doLogout();">Logout</button>
     </div>
@@ -49,10 +49,10 @@
         </table>
       </div>
       <div class="row justify-content-center pad">
-        <button class="page-nums" onclick="changePage(-1,0)">
+        <button class="page-nums" onclick="changeSearchPage(-1,1)">
           <i class="fa fa-arrow-left" aria-hidden="true"></i>
         </button>
-        <button class="page-nums" onclick="changePage(1,0)">
+        <button class="page-nums" onclick="changeSearchPage(1,1)">
           <i class="fa fa-arrow-right" aria-hidden="true"></i>
         </button>
       </div>
