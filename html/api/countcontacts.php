@@ -47,6 +47,7 @@
 		$num = $result->num_rows;
 		
 		// Return with the data
+		error_log("num is: " . $num);
 		returnWithNumber($num);
 		$conn->close();
 		
