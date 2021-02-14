@@ -171,6 +171,7 @@ function getContactNum(callback, change, isSearching)
 	if(isSearching == 1)
 	{
 		search = localStorage.getItem("search");
+		console.log("search time");
 	}
 	else
 	{
