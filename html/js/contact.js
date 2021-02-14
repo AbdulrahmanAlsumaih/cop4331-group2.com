@@ -273,7 +273,6 @@ function overlayOnUpdate(id) {
 	let inp = document.createElement('input');
 	inp.type = "text";inp.class = "form-control"; inp.id="u-firstname";inp.placeholder="Enter first name";
 	firstName.appendChild(inp);
-	document.getElementById("test1") = (firstName);
 	document.getElementById("update-overlay").style.display = "block";
 	universal_id = id.substring(4);
 }
