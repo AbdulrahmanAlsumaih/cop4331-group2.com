@@ -34,7 +34,7 @@
 		if( $result == NULL )
 		{
 			returnWithError($conn->error, -1 );
-			error_log("!!!!ERROR CONNECTING TO DATABASE!!!");
+			error_log("!!!!ERROR CONNECTING TO DATABASE!!!" . $conn->error);
 			die();
 		}
 		

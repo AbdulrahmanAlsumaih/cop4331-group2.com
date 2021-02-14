@@ -175,6 +175,7 @@ function getContactNum(callback, change, isSearching)
 	if(isSearching == 1)
 	{
 		search = localStorage.getItem("search");
+		console.log("search time");
 	}
 	else
 	{
@@ -190,10 +191,10 @@ function getContactNum(callback, change, isSearching)
 	jsonPayload = '';
 	
 	// add the search if possible
-	if(search != ""){
-		let jsonPayload = '{"search" : "' + search + '"}';
+	if(isSearching == 1){
+		jsonPayload = '{"search" : "' + search + '"}';
 	}
-	console.log("search: " + search);
+	console.log("search: " + search + ", jsonPayload: " + jsonPayload);
 
 	try {
 		
