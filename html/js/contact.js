@@ -158,7 +158,7 @@ function drawTable(){
 			  tr.appendChild(td);
 			}
 			td = document.createElement('td');
-			td.innerHTML = "<img id= 'edit"+ String(contact[i][5])+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
+			td.innerHTML = "<img id= 'edit"+ String(contact[i][5])+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(String(contact[i][5]));\" class=\"edit-button\">"
 			console.log(td.id);
 			tr.appendChild(td);
 			document.getElementById("create-table").appendChild(tr);
@@ -259,11 +259,8 @@ function overlayOffAdd() {
 }
 
 function overlayOnUpdate(id) {
+	universal_id = id;
 	let firstName = document.getElementById("test1");
-	let lastName = document.getElementById("test2");
-	let phoneNumber = document.getElementById("test3");
-	let emailAddress = document.getElementById("test4");
-	let date = document.getElementById("test5");
 	let lab = document.createElement('label');
 	lab.class = "login-text";
 	lab.for = "u-firstname";
@@ -274,7 +271,6 @@ function overlayOnUpdate(id) {
 	inp.value = document.getElementById("first" + universal_id);
 	firstName.appendChild(inp);
 	document.getElementById("update-overlay").style.display = "block";
-	universal_id = id.substring(4);
 }
 
 function completeUpdate()
