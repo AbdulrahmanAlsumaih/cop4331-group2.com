@@ -8,6 +8,8 @@
     <!-- Javascript -->
     <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="js/md5.js"></script>
+    <script type="text/javascript" src="js/signup.js"></script>
+    <script type="text/javascript" src="js/contact.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -56,8 +58,49 @@
             <span class="login-text" id="loginResult"></span>
           </div>
           <div class="row justify-content-center ">
-            <a href="signup.html" class="login-text">Create New Account</a>
+            <button onclick="overlayOnSign();" class="sign-btn">Create New Account</button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="signup-overlay" class="sign-overlay">
+      <div class="container sign-pad-top width-limit">          
+      <div class="card mx-auto w-75 car-bg-clr"> 
+        <div class="card-body">
+
+          <div class="row justify-content-center">
+            <div class="col-sm-12">
+              <p class="text">Sign Up</p>
+              <br>
+              <p class="subtitle-text">Enter the information below to start managing your contacts.</p>
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="form-group">
+                <label class="login-text" for="signupEmail">Email:</label>
+                <input type="text" class="form-control" id="signupEmail" placeholder="Enter email address">
+              </div>
+              <div class="form-group">
+                <label class="login-text" for="signupPassword">Password:</label>
+                <input type="password" class="form-control" id="signupPassword" placeholder="Enter password">
+              </div>
+              <div class="row justify-content-center pad-top">
+                <button type="submit" class="reg-btn" onclick="doSignUp();">Sign Up</button>
+              </div>
+              <div class="row justify-content-center pad-top">
+                <p class="login-text">Already have an account?
+                  <button class="sign-btn" onclick="overlayOffSign();"><u>Log In</u></button>
+                </p>
+              </div>
+              <div class="row justify-content-center pad-top">
+                <span class="login-text" id="signupResult"></span>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>
