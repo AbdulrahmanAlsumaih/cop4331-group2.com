@@ -260,7 +260,8 @@ function overlayOffAdd() {
 
 function overlayOnUpdate(id) {
 	universal_id = id.substring(4);
-	let firstName = document.createElement('div');
+	let firstName = document.getElementById("test1");
+	firstName.innerHTML = '';
 	let lab = document.createElement('label');
 	lab.class = "login-text";
 	lab.for = "u-firstname";
@@ -270,7 +271,6 @@ function overlayOnUpdate(id) {
 	inp.type = "text";inp.class = "form-control"; inp.id="u-firstname";inp.placeholder="Enter first name";
 	inp.value = document.getElementById("first" + universal_id).innerHTML;
 	firstName.appendChild(inp);
-	document.getElementById("test1") = firstName;
 	document.getElementById("update-overlay").style.display = "block";
 }
 
