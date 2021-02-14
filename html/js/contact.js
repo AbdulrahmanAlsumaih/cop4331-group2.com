@@ -153,7 +153,7 @@ function drawTable(){
 			for (let j = 0; j < header.length; j ++) { 
 			  td = document.createElement('td');
 			  td.innerHTML = contact[i][j];
-			  td.id = header[i] + String(contact[i][5]);
+			  td.id = header[j] + String(contact[i][5]);
 			  console.log(td.id);
 			  tr.appendChild(td);
 			}
