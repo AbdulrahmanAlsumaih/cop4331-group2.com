@@ -187,10 +187,10 @@ function getContactNum(callback, change, isSearching)
 	jsonPayload = '';
 	
 	// add the search if possible
-	if(search.length !== 0){
+	if(isSearching == 1){
 		let jsonPayload = '{"search" : "' + search + '"}';
 	}
-	console.log("search: " + search + ", jsonPayload: " + jsonPayload);
+	//console.log("search: " + search + ", jsonPayload: " + jsonPayload);
 
 	try {
 		
