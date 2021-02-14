@@ -253,7 +253,7 @@ function overlayOffAdd() {
 	document.getElementById("add-overlay").style.display = "none";
 }
 
-function overlayOnUpdate() {
+function overlayOnUpdate(id) {
 	document.getElementById("update-overlay").style.display = "block";
 }
   
