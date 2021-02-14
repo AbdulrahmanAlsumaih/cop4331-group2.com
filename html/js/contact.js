@@ -268,10 +268,10 @@ function overlayOnUpdate(id) {
 	lab.class = "login-text";
 	lab.for = "u-firstname";
 	lab.innerText = "First Name";
-	lab.value = document.getElementById("first" + universal_id);
 	firstName.appendChild(lab);
 	let inp = document.createElement('input');
 	inp.type = "text";inp.class = "form-control"; inp.id="u-firstname";inp.placeholder="Enter first name";
+	inp.value = document.getElementById("first" + universal_id);
 	firstName.appendChild(inp);
 	document.getElementById("update-overlay").style.display = "block";
 	universal_id = id.substring(4);
