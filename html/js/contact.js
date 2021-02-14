@@ -189,6 +189,7 @@ function getContactNum(callback, change, isSearching)
 	if(search != ""){
 		let jsonPayload = '{"search" : "' + search + '"}';
 	}
+	console.log("search: " + search);
 
 	try {
 		
