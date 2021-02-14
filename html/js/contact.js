@@ -211,7 +211,7 @@ function getContactNum(callback, change, isSearching)
 		};
 
 	} catch(err) {
-	console.log("error!");
+	console.log(err.message);
 	document.getElementById("getContactResult").innerHTML = err.message;
 	}
 }
