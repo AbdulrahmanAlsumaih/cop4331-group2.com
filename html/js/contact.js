@@ -309,7 +309,7 @@ function searchContact() {
 	localStorage.setItem("search", search);
 	
 	// Redirect to search result page
-	window.location.href = "cop4331-group2.com/search.html";
+	window.location.href = "search.html";
 }
 
 // Function obv not complete
