@@ -260,17 +260,26 @@ function overlayOffAdd() {
 
 function overlayOnUpdate(id) {
 	universal_id = id.substring(4);
-	let firstName = document.getElementById("test1");
-	firstName.innerHTML = '';
-	let lab = document.createElement('label');
-	lab.class = "login-text";
-	lab.for = "u-firstname";
-	lab.innerText = "First Name";
-	firstName.appendChild(lab);
-	let inp = document.createElement('input');
-	inp.type = "text";inp.class = "form-control"; inp.id="u-firstname";inp.placeholder="Enter first name";
-	inp.value = document.getElementById("first" + universal_id).innerHTML;
-	firstName.appendChild(inp);
+	let arr = [	["u-firstname", "First Name", "first name"], ["u-lastname", "Last Name", "last name"], ["u-phone", "Phone Number", "phone"],
+				["u-email", "Email Address", "email"], ["u-date", "Date", "date"]];
+	let firstname;
+	let lab;
+	let inp;
+	for (int i = 0; i < header.length; i++)
+	{
+
+		firstName = document.getElementById("test"+String(i+1));
+		firstName.innerHTML = '';
+		lab = document.createElement('label');
+		lab.class = "login-text";
+		lab.for = arr[i][0];
+		lab.innerText = arr[i][1];
+		firstName.appendChild(lab);
+		inp = document.createElement('input');
+		inp.type = "text";inp.class = "form-control"; inp.id=arr[i][0];inp.placeholder="Enter "+arr[i][2];
+		inp.value = document.getElementById(header[i] + universal_id).innerHTML;
+		firstName.appendChild(inp);
+	}
 	document.getElementById("update-overlay").style.display = "block";
 }
 
