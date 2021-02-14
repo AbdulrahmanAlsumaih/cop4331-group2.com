@@ -301,6 +301,7 @@ function completeUpdate()
 	for (let i = 0; i < arr.length; i++) {
 		console.log(arr[i].value);
 	}
+	document.getElementById("updateform").reset();
 	overlayOffUpdate();
 }
   
