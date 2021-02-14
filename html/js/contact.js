@@ -158,7 +158,7 @@ function drawTable(){
 			  tr.appendChild(td);
 			}
 			td = document.createElement('td');
-			td.innerHTML = "<img id= 'edit"+ String(contact[i][5])+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(String(contact[i][5]));\" class=\"edit-button\">"
+			td.innerHTML = "<img id= 'edit"+ String(contact[i][5])+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
 			console.log(td.id);
 			tr.appendChild(td);
 			document.getElementById("create-table").appendChild(tr);
@@ -259,7 +259,7 @@ function overlayOffAdd() {
 }
 
 function overlayOnUpdate(id) {
-	universal_id = id;
+	universal_id = id.substring(4);
 	let firstName = document.getElementById("test1");
 	let lab = document.createElement('label');
 	lab.class = "login-text";
