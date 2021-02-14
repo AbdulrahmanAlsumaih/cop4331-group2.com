@@ -22,12 +22,15 @@
 	else
 	{
 		// grab all of the users contacts
-		if ($inData['search']){
+		/*if ($inData['search']){
+			error_log("searching time");
 			$sql = "select num,firstname,lastname,email,phone,date from contacts where id = " . $_SESSION['id'] . "AND firstname  like '" . $inData["search"] . "%' or lastname  like '" . $inData["search"] . "%' or email  like '" . $inData["search"] . "%' or phone  like '" . $inData["search"] . ";";
 		}
 		else{
 			$sql = "select num,firstname,lastname,email,phone,date from contacts where id = " . $_SESSION['id'] . ";";
 		}
+		*/
+		$sql = "select num,firstname,lastname,email,phone,date from contacts where id = " . $_SESSION['id'] . ";";
 		
 		$result = $conn->query($sql);
 		
