@@ -1,6 +1,6 @@
 let urlBase = 'http://www.cop4331-group2.com/api';
 let extension = 'php';
-let counter = 0;
+let counter = 1;
 let contacts_per_page = 5;
 let contact = [];
 let header = ["first", "last", "phone", "email", "date"];
