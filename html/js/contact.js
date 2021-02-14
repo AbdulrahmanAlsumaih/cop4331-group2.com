@@ -349,7 +349,7 @@ function addContact() {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				document.getElementById("addContactResult").innerHTML = "Contact Added!";
-				document.getElementById('addform').reset();
+				document.getElementById("addform").reset();
 			}
 		};
 	} catch(err) {
