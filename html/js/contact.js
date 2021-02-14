@@ -261,6 +261,7 @@ function overlayOffAdd() {
 function overlayOnUpdate(id) {
 	universal_id = id.substring(4);
 	let firstName = document.getElementById("test1");
+	firstname = '';
 	let lab = document.createElement('label');
 	lab.class = "login-text";
 	lab.for = "u-firstname";
@@ -268,7 +269,7 @@ function overlayOnUpdate(id) {
 	firstName.appendChild(lab);
 	let inp = document.createElement('input');
 	inp.type = "text";inp.class = "form-control"; inp.id="u-firstname";inp.placeholder="Enter first name";
-	inp.value = document.getElementById("first" + universal_id).value;
+	inp.value = document.getElementById("first" + universal_id).innerHTML;
 	firstName.appendChild(inp);
 	document.getElementById("update-overlay").style.display = "block";
 }
