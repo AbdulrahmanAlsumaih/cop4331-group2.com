@@ -183,13 +183,11 @@ function getContactNum(callback, change, isSearching)
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	jsonPayload = '';
 	
 	// add the search if possible
 	if(search != ""){
 		let jsonPayload = '{"search" : "' + search + '"}';
-	}
-	else{
-		let jsonPayload = '';
 	}
 
 	try {
