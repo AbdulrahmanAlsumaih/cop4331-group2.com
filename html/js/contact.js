@@ -1,5 +1,3 @@
-let urlBase = 'http://www.cop4331-group2.com/api';
-let extension = 'php';
 let counter = 1;
 let contacts_per_page = 5;
 let contact = [];
@@ -285,8 +283,8 @@ function overlayOnUpdate(id) {
 
 function completeUpdate()
 {
-	let arr = [	document.getElementById("u-firstname"), document.getElementById("u-lastname"), document.getElementById("u-email"), 
-				document.getElementById("u-phone"), document.getElementById("u-date")];
+	let arr = [	document.getElementById("u-firstname"), document.getElementById("u-lastname"), document.getElementById("u-phone"), 
+				document.getElementById("u-email"), document.getElementById("u-date")];
 	for (let i = 0; i < arr.length; i++) {
 		console.log(arr[i].value);
 	}
