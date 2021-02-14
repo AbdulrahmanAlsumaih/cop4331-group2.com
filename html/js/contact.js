@@ -1,15 +1,66 @@
-
+let urlBase = 'http://www.cop4331-group2.com/api';
+let extension = 'php';
 let counter = 1;
 let contacts_per_page = 5;
-let contact = [["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"],["a", "b", "a@gmail", "123-456-7890", "02/12/2021"]];
+let contact = [];
 let num_pages = 1;
-let universal_id;
-// Main function to create the table, grabs the contacts and then creates the table
-function createTable() {
+let search = '';
 
-  // Find the number of pages
-	drawTable();
-	//getContactNum(updateCounter, 0);
+// Main function to create the table, grabs the contacts and then creates the table
+function createTable(isSearching) {
+	
+  // change the page but not really
+	changepage(0,isSearching);
+	
+}
+function getSearchResults(callback){
+	// Code to get contacts from DB
+	let jsonPayload = '{"pagenumber":' + counter + ', "search":"' + search + '"}';
+	let url = urlBase + '/searchcontacts.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try {
+		// Send JSON
+		xhr.send(jsonPayload);
+
+		// Recieve response
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+
+				// Parse the jsonObject
+				let jsonObject = JSON.parse(xhr.responseText);
+				
+				// Reset the contact object
+				contact = [];
+				
+				// Check for an error
+				if(jsonObject["error"] == "No results found"){
+					callback();
+					return;
+				}
+					
+				// Convert the jsonObject to an array
+				values = Object.values(jsonObject);
+
+				// For each contact in the response
+				for(i=0; i < values.length; i++) {
+
+					// Append the contact information to the contacts object (ugly line time)
+					contact.push(new Array(values[i]['firstname'],values[i]['lastname'],values[i]['phone'],values[i]['email'],values[i]['date'],values[i]['num']));
+				}
+				
+				// Call the callback function that draws the table
+				callback();
+		
+			}
+		};
+
+	} catch(err) {
+	document.getElementById("getContactResult").innerHTML = err.message;
+	}
 	
 }
 
@@ -94,31 +145,38 @@ function drawTable(){
 	{
 		for (let i = 0; i < contact.length; i++) {
 			tr = document.createElement('tr');
-			tr.id = "num" + String(((counter - 1) * contacts_per_page) + i + 1);
+			
 			for (let j = 0; j < contact[i].length; j ++) { 
 			  td = document.createElement('td');
 			  td.innerHTML = contact[i][j];
 			  tr.appendChild(td);
 			}
-			td = document.createElement('td');
-			td.innerHTML = "<img id= 'edit"+ String(((counter - 1) * contacts_per_page) + i + 1)+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
-			tr.appendChild(td);
-			console.log(tr.id);
+
 			document.getElementById("create-table").appendChild(tr);
 		}
 	}
 	
 }
 
-function changePage(change) {
+function changePage(change, isSearching) {
 	
 	// Figure out how many contacts there are and then update the counter
-	getContactNum(updateCounter, change);
+	getContactNum(updateCounter, change, isSearching);
 
 }
 
-function getContactNum(callback, change)
+function getContactNum(callback, change, isSearching)
 {
+	// See if a search was being performed
+	if(isSearching == 1)
+	{
+		search = localStorage.getItem("search");
+	}
+	else
+	{
+		search = '';
+	}
+	
 	// Code to get contact num from DB
 	let url = urlBase + '/countcontacts.' + extension;
 
@@ -126,10 +184,17 @@ function getContactNum(callback, change)
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	
+	// add the search if possible
+	if(search != ""){
+		let jsonPayload = '{"search" : "' + search + '"}';
+	}
+	else{
+		let jsonPayload = '';
+	}
 
 	try {
 		
-		xhr.send("");
+		xhr.send(jsonPayload);
 
 		// Recieve response
 		xhr.onreadystatechange = function() {
@@ -184,26 +249,8 @@ function overlayOffAdd() {
 	document.getElementById("add-overlay").style.display = "none";
 }
 
-function overlayOnUpdate(id) {
+function overlayOnUpdate() {
 	document.getElementById("update-overlay").style.display = "block";
-	universal_id = id.substring(4);
-}
-
-function completeUpdate()
-{
-	let arr = [	document.getElementById("u-firstname"), document.getElementById("u-lastname"), document.getElementById("u-email"), 
-				document.getElementById("u-phone"), document.getElementById("u-date")];
-	document.getElementById("num"+universal_id).innerHTML = '';
-	tr = document.getElementById("num"+universal_id);
-	for (let i = 0; i < arr.length; i++) {
-		td = document.createElement('td');
-		td.innerHTML = arr[i].value;
-		tr.appendChild(td);
-	}
-	td = document.createElement('td');
-	td.innerHTML = "<img id= 'edit"+ String(universal_id)+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">";
-	tr.appendChild(td);
-	overlayOffUpdate();
 }
   
 function overlayOffUpdate() {
@@ -218,14 +265,6 @@ function overlayOffDelete() {
 	document.getElementById("delete-overlay").style.display = "none";
 }
 
-function overlayOnSign() {
-	document.getElementById("signup-overlay").style.display = "block";
-}
-  
-function overlayOffSign() {
-	document.getElementById("signup-overlay").style.display = "none";
-}
-
 function addContact() {
 	let firstName = document.getElementById("a-firstname").value;
 	let lastName = document.getElementById("a-lastname").value;
@@ -235,12 +274,7 @@ function addContact() {
 	document.getElementById("addContactResult").innerHTML = "";
 
 	if (firstName === "" || lastName === "") {
-		document.getElementById("addContactResult").innerHTML = "Please add a full name.";
-		return;
-	}
-
-	if (isNaN(phone)) {
-		document.getElementById("addContactResult").innerHTML = "Please enter a valid phone number.";
+		document.getElementById("addContactResult").innerHTML = "Please add a full name";
 		return;
 	}
 	
@@ -269,40 +303,13 @@ function addContact() {
 
 // Function not complete
 function searchContact() {
-	let srch = document.getElementById("searchText").value;
-	document.getElementById("colorSearchResult").innerHTML = "";
 	
-	let colorList = "";
+	// Store the search value
+	var search = document.getElementById('search').value;
+	localStorage.setItem("search", search);
 	
-	let jsonPayload = '{"search" : "' + srch + '","userId" : ' + userId + '}';
-	let url = urlBase + '/SearchColors.' + extension;
-	
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	
-	try {
-		xhr.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("searchContactResult").innerHTML = "Color(s) has been retrieved";
-				let jsonObject = JSON.parse( xhr.responseText );
-				
-				for( let i=0; i<jsonObject.results.length; i++ ) {
-					colorList += jsonObject.results[i];
-					if( i < jsonObject.results.length - 1 ) {
-						colorList += "<br />\r\n";
-					}
-				}
-				
-				document.getElementsByTagName("p")[0].innerHTML = colorList;
-			}
-		};
-		xhr.send(jsonPayload);
-
-	} catch(err) {
-		document.getElementById("searchContactResult").innerHTML = err.message;
-	}
-	
+	// Redirect to search result page
+	window.location.href = "cop4331-group2.com/search.html";
 }
 
 // Function obv not complete
