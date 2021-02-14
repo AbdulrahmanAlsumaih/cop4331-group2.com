@@ -147,10 +147,11 @@ function drawTable(){
 	{
 		for (let i = 0; i < contact.length; i++) {
 			tr = document.createElement('tr');
-			
+			tr.id = "num" + String(((counter - 1) * contacts_per_page) + i + 1);
 			for (let j = 0; j < header.length; j ++) { 
 			  td = document.createElement('td');
 			  td.innerHTML = contact[i][j];
+			  td.id = header[i] + String(((counter - 1) * contacts_per_page) + i + 1)
 			  tr.appendChild(td);
 			}
 			td = document.createElement('td');
