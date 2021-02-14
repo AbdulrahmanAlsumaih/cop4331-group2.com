@@ -10,7 +10,7 @@ let search = '';
 function createTable(isSearching) {
 	
   // change the page but not really
-	changepage(0,isSearching);
+	changePage(0,isSearching);
 	
 }
 function getSearchResults(callback){
