@@ -316,6 +316,14 @@ function overlayOffDelete() {
 	document.getElementById("delete-overlay").style.display = "none";
 }
 
+function overlayOnSign() {
+	document.getElementById("signup-overlay").style.display = "block";
+}
+  
+function overlayOffSign() {
+	document.getElementById("signup-overlay").style.display = "none";
+}
+
 function addContact() {
 	let firstName = document.getElementById("a-firstname").value;
 	let lastName = document.getElementById("a-lastname").value;
