@@ -3,7 +3,9 @@ let extension = 'php';
 let counter = 1;
 let contacts_per_page = 5;
 let contact = [];
+let header = ["first", "last", "phone", "email", "date"];
 let num_pages = 1;
+let universal_id;
 let search = '';
 
 // Main function to create the table, grabs the contacts and then creates the table
@@ -146,12 +148,14 @@ function drawTable(){
 		for (let i = 0; i < contact.length; i++) {
 			tr = document.createElement('tr');
 			
-			for (let j = 0; j < contact[i].length; j ++) { 
+			for (let j = 0; j < header.length; j ++) { 
 			  td = document.createElement('td');
 			  td.innerHTML = contact[i][j];
 			  tr.appendChild(td);
 			}
-
+			td = document.createElement('td');
+			td.innerHTML = "<img id= 'edit"+ String(((counter - 1) * contacts_per_page) + i + 1)+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
+			tr.appendChild(td);
 			document.getElementById("create-table").appendChild(tr);
 		}
 	}
