@@ -147,15 +147,18 @@ function drawTable(){
 	{
 		for (let i = 0; i < contact.length; i++) {
 			tr = document.createElement('tr');
-			tr.id = "num" + String(((counter - 1) * contacts_per_page) + i + 1);
+			tr.id = "num" + String(contact[i][5]); 
+			console.log(tr.id);
 			for (let j = 0; j < header.length; j ++) { 
 			  td = document.createElement('td');
 			  td.innerHTML = contact[i][j];
-			  td.id = header[i] + String(((counter - 1) * contacts_per_page) + i + 1)
+			  td.id = header[i] + String(contact[i][5]);
+			  console.log(td.id);
 			  tr.appendChild(td);
 			}
 			td = document.createElement('td');
-			td.innerHTML = "<img id= 'edit"+ String(((counter - 1) * contacts_per_page) + i + 1)+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
+			td.innerHTML = "<img id= 'edit"+ String(contact[i][5])+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
+			console.log(tr.id);
 			tr.appendChild(td);
 			document.getElementById("create-table").appendChild(tr);
 		}
