@@ -31,6 +31,7 @@
 		}
 		*/
 		$sql = "select num,firstname,lastname,email,phone,date from contacts where id = " . $_SESSION['id'] . ";";
+		error_log($sql);
 		
 		$result = $conn->query($sql);
 		
