@@ -3,6 +3,7 @@ let contacts_per_page = 5;
 let contact = [];
 let header = ["first", "last", "phone", "email", "date"];
 let num_pages = 1;
+// universal_id is equivalent to contact.num
 let universal_id;
 let search = '';
 
@@ -154,6 +155,10 @@ function drawTable(){
 			  tr.appendChild(td);
 			}
 			td = document.createElement('td');
+			
+			// This line adds the pencil image and calls overlayOnUpdate() when the image is clicked. "this.id" is the images id 
+			// (example: edit32 where 32 is contact.num and becomes universal_id)
+
 			td.innerHTML = "<img id= 'edit"+ String(contact[i][5])+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
 			tr.appendChild(td);
 			document.getElementById("create-table").appendChild(tr);
@@ -253,34 +258,42 @@ function overlayOffAdd() {
 	document.getElementById("add-overlay").style.display = "none";
 }
 
+/*
+	Similar to drawTable, this function dynamically creates elements
+*/
 function overlayOnUpdate(id) {
 	universal_id = id.substring(4);
+	
+	// arr[i][0] = id, arr[i][1] = label's innerText (subject to change because I'm not sure why it isn't appearing on the site), arr[i][2] = placeholder
 	let arr = [["u-firstname", "First Name", "first name"], ["u-lastname", "Last Name", "last name"], ["u-phone", "Phone Number", "phone"],
 				["u-email", "Email Address", "email"], ["u-date", "Date", "date"]];
-	let firstName;
+	let element;
 	let lab;
 	let inp;
 	for (let i = 0; i < header.length; i++)
 	{
-		firstName = document.getElementById("test"+String(i+1));
+		element = document.getElementById("test"+String(i+1));
 		firstName.innerHTML = '';
+
+		/*
+		Equivalent to: <label class="login-text" for="u-phone">Phone Number:</label>
+		*/
 		lab = document.createElement('label');
-		/*
-			Equivalent to: <label class="login-text" for="u-phone">Phone Number:</label>
-		*/
 		lab.class = "login-text"; lab.for = arr[i][0]; lab.innerText = arr[i][1];
-		firstName.appendChild(lab);
-		inp = document.createElement('input');
+		element.appendChild(lab);
+
 		/*
-			Equivalent to: <input type="tel" class="form-control" id="u-phone" placeholder="Enter phone">
+		Equivalent to: <input type="tel" class="form-control" id="u-phone" placeholder="Enter phone">
 		*/
+		inp = document.createElement('input');
 		inp.type = "text"; inp.class = "form-control"; inp.id = arr[i][0]; inp.placeholder = "Enter " + arr[i][2];
 		inp.value = document.getElementById(header[i] + universal_id).innerHTML;
-		firstName.appendChild(inp);
+		element.appendChild(inp);
 	}
 	document.getElementById("update-overlay").style.display = "block";
 }
 
+// This function will be called once the user hits update submit button
 function completeUpdate()
 {
 	let arr = [	document.getElementById("u-firstname"), document.getElementById("u-lastname"), document.getElementById("u-phone"), 
