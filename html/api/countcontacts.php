@@ -39,6 +39,7 @@
 		
 		if( $result == NULL )
 		{
+			error_log("ERROR: " . $conn->error);
 			returnWithError($conn->error, -1 );
 			die();
 		}
