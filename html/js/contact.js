@@ -261,7 +261,7 @@ function overlayOffAdd() {
 function overlayOnUpdate(id) {
 	universal_id = id.substring(4);
 	let firstName = document.getElementById("test1");
-	firstname = document.createElement('div');
+	firstname.innerHTML = '';
 	let lab = document.createElement('label');
 	lab.class = "login-text";
 	lab.for = "u-firstname";
