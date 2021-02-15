@@ -264,16 +264,16 @@ function overlayOnUpdate(id) {
 	let element;
 	let lab;
 	let inp;
+	document.getElementById("updateform").innerHTML = "";
 	for (let i = 0; i < header.length; i++)
 	{
-		element = document.getElementById("test"+String(i+1));
-		firstName.innerHTML = '';
-		
+		element = document.createElement('div');
+		element.class = 'form-group';
 		/*
 		Equivalent to: <label class="login-text" for="u-phone">Phone Number:</label>
 		*/
 		lab = document.createElement('label');
-		lab.class = "login-text"; lab.for = arr[i][0]; lab.innerText = arr[i][1];
+		lab.class = "update-text"; lab.for = arr[i][0]; lab.innerText = arr[i][1];
 		element.appendChild(lab);
 		
 		/*
@@ -283,6 +283,7 @@ function overlayOnUpdate(id) {
 		inp.type = "text"; inp.class = "form-control"; inp.id = arr[i][0]; inp.placeholder = "Enter " + arr[i][2];
 		inp.value = document.getElementById(header[i] + universal_id).innerHTML;
 		element.appendChild(inp);
+		document.getElementById("updateform").appendChild(element);
 	}
 	document.getElementById("update-overlay").style.display = "block";
 }
