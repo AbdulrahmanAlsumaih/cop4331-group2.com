@@ -272,7 +272,7 @@ function overlayOnUpdate(id) {
 		Equivalent to: <label class="login-text" for="u-phone">Phone Number:</label>
 		*/
 		lab = document.createElement('label');
-		lab.class = "login-text"; lab.for = arr[i][0]; lab.innerText = arr[i][1];
+		lab.class = "update-text"; lab.for = arr[i][0]; lab.innerText = arr[i][1];
 		element.appendChild(lab);
 		
 		/*

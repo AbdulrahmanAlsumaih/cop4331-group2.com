@@ -411,3 +411,7 @@ input:focus {
   transform: translateX(-4px);
   background-color: rgb(0, 96, 175);
 }
+
+.update-text {
+  color: white;
+}
