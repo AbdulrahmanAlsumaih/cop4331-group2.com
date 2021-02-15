@@ -268,19 +268,19 @@ function overlayOnUpdate(id) {
 	for (let i = 0; i < header.length; i++)
 	{
 		element = document.createElement('div');
-		element.class = 'form-group';
+		element.className = 'form-group';
 		/*
 		Equivalent to: <label class="login-text" for="u-phone">Phone Number:</label>
 		*/
 		lab = document.createElement('label');
-		lab.class = "update-text"; lab.for = arr[i][0]; lab.innerText = arr[i][1];
+		lab.className = "update-text"; lab.for = arr[i][0]; lab.innerText = arr[i][1];
 		element.appendChild(lab);
 		
 		/*
 		Equivalent to: <input type="tel" class="form-control" id="u-phone" placeholder="Enter phone">
 		*/
 		inp = document.createElement('input');
-		inp.type = "text"; inp.class = "form-control"; inp.id = arr[i][0]; inp.placeholder = "Enter " + arr[i][2];
+		inp.type = "text"; inp.className = "form-control"; inp.id = arr[i][0]; inp.placeholder = "Enter " + arr[i][2];
 		inp.value = document.getElementById(header[i] + universal_id).innerHTML;
 		element.appendChild(inp);
 		document.getElementById("updateform").appendChild(element);
