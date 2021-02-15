@@ -215,7 +215,7 @@ function getContactNum(callback, change, isSearching)
 				
 				// Grab the number of contacts and use that to calculate the number of pages
 				num_pages = Math.ceil(jsonObject['num'] / contacts_per_page);
-				callback(change);
+				callback(change, isSearching);
 		
 			}
 		};
@@ -226,7 +226,7 @@ function getContactNum(callback, change, isSearching)
 	}
 }
 
-function updateCounter(change) {
+function updateCounter(change, isSearching) {
 	
 	// Update the counter
 	if (change == 1) {
@@ -240,7 +240,15 @@ function updateCounter(change) {
 	}
 	
 	// Grab the contacts from the database and then draw the table again
-	getContacts(drawTable);
+	// If searching, grab contacts from the search functions
+	if(isSearching == 1)
+	{
+		getSearchResults(drawTable);
+	}
+	else
+	{
+		getContacts(drawTable);
+	}
 }
 
 function replace() {
