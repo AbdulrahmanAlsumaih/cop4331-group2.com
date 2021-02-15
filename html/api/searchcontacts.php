@@ -27,7 +27,7 @@
 		$offset = 5;
 		
 		// Retrieve the data from the db
-		$sql = "select num,firstname,lastname,email,phone,date from contacts where id = " . $_SESSION['id'] . " AND firstname like '" . $inData["search"] . "%' or lastname  like '" . $inData["search"] . "%' or email  like '" . $inData["search"] . "%' or phone like '" . $inData["search"] . "%'" . " limit " . $lastvalue . "," . $offset . ";";
+		$sql = "select num,firstname,lastname,email,phone,date from contacts where id = " . $_SESSION['id'] . " AND (firstname like '" . $inData["search"] . "%' or lastname  like '" . $inData["search"] . "%' or email  like '" . $inData["search"] . "%' or phone like '" . $inData["search"] . "%' )" . " limit " . $lastvalue . "," . $offset . ";";
 		$result = $conn->query($sql);
 		
 		if( $result == NULL )
