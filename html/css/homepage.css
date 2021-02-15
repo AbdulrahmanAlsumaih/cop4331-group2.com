@@ -129,19 +129,6 @@ tr {
   display: inline-block;
 }
 
-.page-nums {
-  color: white;
-  border: none;
-  background-color: inherit;
-  display: inline-block;
-  font-size: 24px;
-  outline: none;
-}
-
-.page-nums:hover {
-  opacity: 0.6;
-}
-
 button:focus {
   /* border: none; */
   outline: none;
@@ -381,4 +368,46 @@ input:focus {
 
 .del-confirm-pad {
   padding-top: 400px;
+}
+
+.next-btn {
+  border: 2px solid white;
+  border-radius: 8px;
+  background-color: rgb(37, 37, 37);
+  color: white;
+  width: 80px;
+  font-size: 20px;
+  text-align: center;
+  margin: 10px;
+}
+
+.next-btn:hover {
+  background-color: rgb(0, 139, 252);
+  transition: 0.3s;
+}
+
+.next-btn:active {
+  transform: translateX(4px);
+  background-color: rgb(0, 96, 175);
+}
+
+.prev-btn {
+  border: 2px solid white;
+  border-radius: 8px;
+  background-color: rgb(37, 37, 37);
+  color: white;
+  width: 80px;
+  font-size: 20px;
+  text-align: center;
+  margin: 10px;
+}
+
+.prev-btn:hover {
+  background-color: rgb(0, 139, 252);
+  transition: 0.3s;
+}
+
+.prev-btn:active {
+  transform: translateX(-4px);
+  background-color: rgb(0, 96, 175);
 }

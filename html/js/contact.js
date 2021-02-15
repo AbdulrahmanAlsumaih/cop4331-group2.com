@@ -250,23 +250,16 @@ function replace() {
 	document.getElementById("submit-magnify").innerHTML = "<button class=\"submit-mag\">Submit</button>";
 }
 
-function overlayOnAdd() {
-	document.getElementById("add-overlay").style.display = "block";
-}
-  
-function overlayOffAdd() {
-	document.getElementById("add-overlay").style.display = "none";
-}
 
 /*
-	Similar to drawTable, this function dynamically creates elements
+Similar to drawTable, this function dynamically creates elements
 */
 function overlayOnUpdate(id) {
 	universal_id = id.substring(4);
 	
 	// arr[i][0] = id, arr[i][1] = label's innerText (subject to change because I'm not sure why it isn't appearing on the site), arr[i][2] = placeholder
 	let arr = [["u-firstname", "First Name", "first name"], ["u-lastname", "Last Name", "last name"], ["u-phone", "Phone Number", "phone"],
-				["u-email", "Email Address", "email"], ["u-date", "Date", "date"]];
+	["u-email", "Email Address", "email"], ["u-date", "Date", "date"]];
 	let element;
 	let lab;
 	let inp;
@@ -274,14 +267,13 @@ function overlayOnUpdate(id) {
 	{
 		element = document.getElementById("test"+String(i+1));
 		element.innerHTML = '';
-
 		/*
 		Equivalent to: <label class="login-text" for="u-phone">Phone Number:</label>
 		*/
 		lab = document.createElement('label');
 		lab.class = "login-text"; lab.for = arr[i][0]; lab.innerText = arr[i][1];
 		element.appendChild(lab);
-
+		
 		/*
 		Equivalent to: <input type="tel" class="form-control" id="u-phone" placeholder="Enter phone">
 		*/
@@ -291,29 +283,6 @@ function overlayOnUpdate(id) {
 		element.appendChild(inp);
 	}
 	document.getElementById("update-overlay").style.display = "block";
-}
-
-// This function will be called once the user hits update submit button
-function completeUpdate()
-{
-	let arr = [	document.getElementById("u-firstname"), document.getElementById("u-lastname"), document.getElementById("u-phone"), 
-				document.getElementById("u-email"), document.getElementById("u-date")];
-	for (let i = 0; i < arr.length; i++) {
-		console.log(arr[i].value);
-	}
-	overlayOffUpdate();
-}
-  
-function overlayOffUpdate() {
-	document.getElementById("update-overlay").style.display = "none";
-}
-
-function overlayOnDelete() {
-	document.getElementById("delete-overlay").style.display = "block";
-}
-  
-function overlayOffDelete() {
-	document.getElementById("delete-overlay").style.display = "none";
 }
 
 function addContact() {
@@ -341,6 +310,7 @@ function addContact() {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				document.getElementById("addContactResult").innerHTML = "Contact Added!";
+				clearAdd();
 			}
 		};
 	} catch(err) {
@@ -367,3 +337,50 @@ function searchContact() {
 function deleteContact() {
 	
 }
+
+// This function will be called once the user hits update submit button
+function completeUpdate()
+{
+	let arr = [	document.getElementById("u-firstname"), document.getElementById("u-lastname"), document.getElementById("u-phone"), 
+	document.getElementById("u-email"), document.getElementById("u-date")];
+	for (let i = 0; i < arr.length; i++) {
+		console.log(arr[i].value);
+	}
+	document.getElementById("updateform").reset();
+	overlayOffUpdate();
+}
+
+// Clears the form upon clicking the close button
+function clearAdd() {
+	document.getElementById("addform").reset();
+}
+
+// All overlay functions
+function overlayOnAdd() {
+	document.getElementById("add-overlay").style.display = "block";
+}
+  
+function overlayOffAdd() {
+	document.getElementById("add-overlay").style.display = "none";
+}
+
+function overlayOffUpdate() {
+	document.getElementById("update-overlay").style.display = "none";
+}
+
+function overlayOnDelete() {
+	document.getElementById("delete-overlay").style.display = "block";
+}
+  
+function overlayOffDelete() {
+	document.getElementById("delete-overlay").style.display = "none";
+}
+
+function overlayOnSign() {
+	document.getElementById("signup-overlay").style.display = "block";
+}
+  
+function overlayOffSign() {
+	document.getElementById("signup-overlay").style.display = "none";
+}
+
