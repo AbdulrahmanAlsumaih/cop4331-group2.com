@@ -273,7 +273,7 @@ function overlayOnUpdate(id) {
 	for (let i = 0; i < header.length; i++)
 	{
 		element = document.getElementById("test"+String(i+1));
-		firstName.innerHTML = '';
+		element.innerHTML = '';
 
 		/*
 		Equivalent to: <label class="login-text" for="u-phone">Phone Number:</label>
