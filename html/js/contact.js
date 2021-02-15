@@ -14,6 +14,7 @@ function createTable(isSearching) {
 	changePage(0,isSearching);
 	
 }
+
 function getSearchResults(callback){
 	// Code to get contacts from DB
 	let jsonPayload = '{"pagenumber":' + counter + ', "search":"' + search + '"}';
@@ -263,16 +264,16 @@ function overlayOnUpdate(id) {
 	let element;
 	let lab;
 	let inp;
-	document.getElementById("updateform").innerHTML = "";
 	for (let i = 0; i < header.length; i++)
 	{
-		element = document.createElement('div');
-		element.class = 'form-group';
+		element = document.getElementById("test"+String(i+1));
+		firstName.innerHTML = '';
+		
 		/*
 		Equivalent to: <label class="login-text" for="u-phone">Phone Number:</label>
 		*/
 		lab = document.createElement('label');
-		lab.class = "update-text"; lab.for = arr[i][0]; lab.innerText = arr[i][1];
+		lab.class = "login-text"; lab.for = arr[i][0]; lab.innerText = arr[i][1];
 		element.appendChild(lab);
 		
 		/*
@@ -282,23 +283,36 @@ function overlayOnUpdate(id) {
 		inp.type = "text"; inp.class = "form-control"; inp.id = arr[i][0]; inp.placeholder = "Enter " + arr[i][2];
 		inp.value = document.getElementById(header[i] + universal_id).innerHTML;
 		element.appendChild(inp);
-		document.getElementById("updateform").appendChild(element);
 	}
 	document.getElementById("update-overlay").style.display = "block";
 }
 
 function addContact() {
+	// Grabbing all values from the HTML add form
 	let firstName = document.getElementById("a-firstname").value;
 	let lastName = document.getElementById("a-lastname").value;
 	let email = document.getElementById("a-email").value;
 	let phone = document.getElementById("a-phone").value;
-	let date = document.getElementById("a-date").value;
 	document.getElementById("addContactResult").innerHTML = "";
-
-	if (firstName === "" || lastName === "") {
-		document.getElementById("addContactResult").innerHTML = "Please add a full name";
+	
+	// Error checking that at least the first name was filled
+	if (firstName === "") {
+		document.getElementById("addContactResult").innerHTML = "Please enter at least a first name.";
 		return;
 	}
+
+	// Error checking for phone number
+	if (isNaN(phone)) {
+		document.getElementById("addContactResult").innerHTML = "Please enter a valid phone number.";
+		return;
+	}
+
+	// Getting the current date and formatting it
+	let today = new Date();
+	let d = today.getDate();
+	let m = today.getMonth() + 1;
+	let y = today.getFullYear();
+	let date = m + '/' + d + '/' + y;
 	
 	let jsonPayload = '{"firstname" : "' + firstName + '", "lastname" : "' + lastName + '", "email" : "' + email + '", "phone" : "' + phone + '", "date" : "' + date + '"}';
 	let url = urlBase + '/addcontact.' + extension;
@@ -321,9 +335,6 @@ function addContact() {
 	
 }
 
-
-
-
 // Function not complete
 function searchContact() {
 	
@@ -340,6 +351,11 @@ function deleteContact() {
 	
 }
 
+// Clears the form upon clicking the close button
+function clearAdd() {
+	document.getElementById("addform").reset();
+}
+
 // This function will be called once the user hits update submit button
 function completeUpdate()
 {
@@ -350,11 +366,6 @@ function completeUpdate()
 	}
 	document.getElementById("updateform").reset();
 	overlayOffUpdate();
-}
-
-// Clears the form upon clicking the close button
-function clearAdd() {
-	document.getElementById("addform").reset();
 }
 
 // All overlay functions
