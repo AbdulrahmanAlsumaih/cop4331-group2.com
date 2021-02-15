@@ -8,6 +8,9 @@
         exit();
     }
 
+    //get rid of cookie
+    setcookie("user", "", time() -3600 );
+    
     //clear the session variables
     session_unset();
 
