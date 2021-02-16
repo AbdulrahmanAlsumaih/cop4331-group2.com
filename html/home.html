@@ -54,7 +54,9 @@
       </div>
 
       <div id="add-overlay" class="overlay">
-        <button type="button" class="close-btn" onclick="overlayOffAdd(); clearAdd(); reloadTablePage();"><i class="fa fa-window-close"></i></button>
+        <button type="button" class="close-btn" onclick="overlayOffAdd(); clearAdd(); reloadTablePage(); eraseResponse('addContactResult');">
+          <i class="fa fa-window-close"></i>
+        </button>
         <div class="container pad">
           <div class="row justify-content-center">
             <div class="col-md-8">
@@ -93,7 +95,9 @@
       </div>
 
       <div id="update-overlay" class="overlay" >
-        <button type="button" class="close-btn" onclick="overlayOffUpdate(); reloadTablePage();"><i class="fa fa-window-close"></i></button>
+        <button type="button" class="close-btn" onclick="overlayOffUpdate(); reloadTablePage(); eraseResponse('updateResult');">
+          <i class="fa fa-window-close"></i>
+        </button>
         <div class="container pad">
           <div class="row justify-content-center">
             <div class="col-md-8">

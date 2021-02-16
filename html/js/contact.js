@@ -19,7 +19,137 @@ function changePage(change, isSearching) {
 	
 	// Figure out how many contacts there are and then update the counter
 	getContactNum(updateCounter, change, isSearching);
+	
+}
 
+// Reloads the current table page after add, update, or delete
+function reloadTablePage() {
+	getContacts(drawTable);
+}
+
+// Updates the page number
+function updateCounter(change, isSearching) {
+	
+	// Update the counter
+	if (change == 1) {
+		counter++;
+		if (counter > num_pages) {
+			counter = 1;
+		}
+	} else if (change == -1) {
+		counter--;
+		if (counter < 1) {
+			counter = num_pages;
+		}
+		
+		// Grab the contacts from the database and then draw the table again
+		// If searching, grab contacts from the search functions
+		if(isSearching == 1) {
+			getSearchResults(drawTable);
+		}
+		else {
+			getContacts(drawTable);
+		}
+	}
+}
+	
+function drawTable() {
+	let tr;
+	let td;
+	
+	/*
+	The save variable holds the header element (the very top row of the table). The next line "...innerHTML = '' " resets the entirety of the table.
+	The final line "...appendChild(save)" adds the header element back to the table. This is done to clear the table elements when the user wants to change pages.
+	*/
+	let save = document.getElementById("header");
+	document.getElementById("create-table").innerHTML = '';
+	document.getElementById("create-table").appendChild(save);
+	
+	/*
+	This nested loop dynamically created table elements. 'tr' is a row and 'td' is each colummn (first, last, phone) in the row.
+	After creating all of the elements of the row, appendChild() is called to add the element of the end of the table.
+	*/
+	
+	// If they have no contacts
+	if(num_pages == 0)
+	{
+		// document.getElementById("create-table").innerHTML = "No Contacts Found";
+		
+		// PUT STUFF HERE
+	}
+	
+	// Otherwise make the contacts table
+	else
+	{
+		for (let i = 0; i < contact.length; i++) {
+			tr = document.createElement('tr');
+			tr.id = "num" + String(contact[i][5]); 
+			for (let j = 0; j < header.length; j ++) { 
+				td = document.createElement('td');
+				td.innerHTML = contact[i][j];
+				td.id = header[j] + String(contact[i][5]);
+				tr.appendChild(td);
+			}
+			td = document.createElement('td');
+			
+			// This line adds the pencil image and calls overlayOnUpdate() when the image is clicked. "this.id" is the images id 
+			// (example: edit32 where 32 is contact.num and becomes universal_id)
+
+			td.innerHTML = "<i id= 'edit"+ String(contact[i][5])+"' onclick=\"overlayOnUpdate(this.id);\" class=\"fa fa-pencil-square-o edit-button\"></i>"
+			tr.appendChild(td);
+			document.getElementById("create-table").appendChild(tr);
+		}
+	}
+	
+}
+	
+	
+function getContactNum(callback, change, isSearching) {
+	// See if a search was being performed
+	if(isSearching == 1) {
+		search = localStorage.getItem("search");
+		console.log("search time");
+	}
+	else {
+		search = '';
+	}
+	
+	// Code to get contact num from DB
+	let url = urlBase + '/countcontacts.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	jsonPayload = '';
+	
+	// add the search if possible
+	if(isSearching == 1) {
+		jsonPayload = '{"search" : "' + search + '"}';
+	}
+	console.log("search: " + search + ", jsonPayload: " + jsonPayload);
+
+	try {
+		
+		xhr.send(jsonPayload);
+
+		// Recieve response
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+
+				// Parse the jsonObject
+				let jsonObject = JSON.parse(xhr.responseText );
+				
+				// Grab the number of contacts and use that to calculate the number of pages
+				num_pages = Math.ceil(jsonObject['num'] / contacts_per_page);
+				callback(change, isSearching);
+		
+			}
+		};
+
+	} catch(err) {
+		console.log(err.message);
+		document.getElementById("getContactResult").innerHTML = err.message;
+	}
 }
 
 function getSearchResults(callback){
@@ -124,147 +254,6 @@ function getContacts(callback){
 	
 }
 
-function drawTable(){
-	let tr;
-	let td;
-	
-	/*
-	The save variable holds the header element (the very top row of the table). The next line "...innerHTML = '' " resets the entirety of the table.
-	The final line "...appendChild(save)" adds the header element back to the table. This is done to clear the table elements when the user wants to change pages.
-	*/
-  let save = document.getElementById("header");
-  document.getElementById("create-table").innerHTML = '';
-  document.getElementById("create-table").appendChild(save);
-	
-	/*
-	This nested loop dynamically created table elements. 'tr' is a row and 'td' is each colummn (first, last, phone) in the row.
-	After creating all of the elements of the row, appendChild() is called to add the element of the end of the table.
-	*/
-	
-	// If they have no contacts
-	if(num_pages == 0)
-	{
-		// document.getElementById("create-table").innerHTML = "No Contacts Found";
-		
-		// PUT STUFF HERE
-	}
-	
-	// Otherwise make the contacts table
-	else
-	{
-		// tbody = document.createElement('tbody');
-		// document.getElementById("create-table").appendChild(tbody);
-
-		
-		for (let i = 0; i < contact.length; i++) {
-			tr = document.createElement('tr');
-			tr.id = "num" + String(contact[i][5]); 
-			for (let j = 0; j < header.length; j ++) { 
-			  td = document.createElement('td');
-			  td.innerHTML = contact[i][j];
-			  td.id = header[j] + String(contact[i][5]);
-			  tr.appendChild(td);
-			}
-			td = document.createElement('td');
-			
-			// This line adds the pencil image and calls overlayOnUpdate() when the image is clicked. "this.id" is the images id 
-			// (example: edit32 where 32 is contact.num and becomes universal_id)
-
-			td.innerHTML = "<i id= 'edit"+ String(contact[i][5])+"' onclick=\"overlayOnUpdate(this.id);\" class=\"fa fa-pencil-square-o edit-button\"></i>"
-			tr.appendChild(td);
-			//tbody.appendChild(tr);
-			document.getElementById("create-table").appendChild(tr);
-		}
-	}
-	
-}
-
-
-function getContactNum(callback, change, isSearching) {
-	// See if a search was being performed
-	if(isSearching == 1) {
-		search = localStorage.getItem("search");
-		console.log("search time");
-	}
-	else {
-		search = '';
-	}
-	
-	// Code to get contact num from DB
-	let url = urlBase + '/countcontacts.' + extension;
-
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	jsonPayload = '';
-	
-	// add the search if possible
-	if(isSearching == 1) {
-		jsonPayload = '{"search" : "' + search + '"}';
-	}
-	console.log("search: " + search + ", jsonPayload: " + jsonPayload);
-
-	try {
-		
-		xhr.send(jsonPayload);
-
-		// Recieve response
-		xhr.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-
-				// Parse the jsonObject
-				let jsonObject = JSON.parse(xhr.responseText );
-				
-				// Grab the number of contacts and use that to calculate the number of pages
-				num_pages = Math.ceil(jsonObject['num'] / contacts_per_page);
-				callback(change, isSearching);
-		
-			}
-		};
-
-	} catch(err) {
-		console.log(err.message);
-		document.getElementById("getContactResult").innerHTML = err.message;
-	}
-}
-
-function reloadTablePage() {
-	getContacts(drawTable);
-}
-
-function updateCounter(change, isSearching) {
-	
-	// Update the counter
-	if (change == 1) {
-		counter++;
-		if (counter > num_pages)
-			counter = 1;
-	} else if (change == -1) {
-		counter--;
-		if (counter < 1)
-			counter = num_pages;
-	}
-	
-	// Grab the contacts from the database and then draw the table again
-	// If searching, grab contacts from the search functions
-	if(isSearching == 1)
-	{
-		getSearchResults(drawTable);
-	}
-	else
-	{
-		getContacts(drawTable);
-	}
-}
-
-function replace() {
-	let Image_Id = document.getElementById('magnify');
-	Image_Id.style="width:50%; height:50%;";
-	Image_Id.type="text";
-	Image_Id.placeholder = "Enter contact here";
-	document.getElementById("submit-magnify").innerHTML = "<button class=\"submit-mag\">Submit</button>";
-}
-
 
 /*
 Similar to drawTable, this function dynamically creates elements
@@ -315,30 +304,30 @@ function addContact() {
 		document.getElementById("addContactResult").innerHTML = "Please enter at least a first name.";
 		return;
 	}
-
+	
 	// Error checking for phone number
 	if (isNaN(phone)) {
 		document.getElementById("addContactResult").innerHTML = "Please enter a valid phone number.";
 		return;
 	}
-
+	
 	if (phone.length > 10) {
 		document.getElementById("addContactResult").innerHTML = "Phone number is too long.";
 		return;
 	}
-
+	
 	if (lastName === "") {
 		lastName = "-";
 	}
-
+	
 	if (email === "") {
 		email = "-";
 	}
-
+	
 	if (phone === "") {
 		phone = "-";
 	}
-
+	
 	// Getting the current date and formatting it
 	let today = new Date();
 	let d = today.getDate();
@@ -353,7 +342,7 @@ function addContact() {
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-
+	
 	try {
 		xhr.send(jsonPayload);
 		xhr.onreadystatechange = function() {
@@ -367,7 +356,6 @@ function addContact() {
 	}
 	
 }
-
 
 function searchContact() {
 	
@@ -385,7 +373,7 @@ function deleteContact() {
 	let jsonPayload = '{"num":"' + id + '"}';
 	let url = urlBase + '/deletecontact.' + extension;
 	console.log(jsonPayload);
-
+	
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -396,17 +384,12 @@ function deleteContact() {
 			if (this.readyState == 4 && this.status == 200) {
 				console.log(xhr.responseText);
 				let jsonObject = JSON.parse(xhr.responseText);
-				//window.location.href = "home.html";
 			}
 		};
 		
 	} catch(err) {
 		document.getElementById("updateResult").innerHTML = err.message;
 	}
-}
-
-function reloadPage() {
-	location.reload();
 }
 
 // Clears the form upon clicking the close button
@@ -425,7 +408,7 @@ function completeUpdate()
 	let jsonPayload = '{"firstname":"' + first + '", "lastname":"' + last + '", "email":"' + email + '", "phone":"' + phone + '", "num":"' + id + '"}';
 	let url = urlBase + '/update.' + extension;
 	console.log(jsonPayload);
-
+	
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -437,7 +420,6 @@ function completeUpdate()
 				console.log(xhr.responseText);
 				let jsonObject = JSON.parse(xhr.responseText);
 				document.getElementById("updateResult").innerHTML = "Contact Updated!";
-				//window.location.href = "home.html";
 			}
 		};
 		
@@ -445,14 +427,13 @@ function completeUpdate()
 		document.getElementById("updateResult").innerHTML = err.message;
 	}
 	document.getElementById("updateform").reset();
-	// overlayOffUpdate();
 }
 
 // All overlay functions
 function overlayOnAdd() {
 	document.getElementById("add-overlay").style.display = "block";
 }
-  
+
 function overlayOffAdd() {
 	document.getElementById("add-overlay").style.display = "none";
 }
@@ -464,7 +445,7 @@ function overlayOffUpdate() {
 function overlayOnDelete() {
 	document.getElementById("delete-overlay").style.display = "block";
 }
-  
+
 function overlayOffDelete() {
 	document.getElementById("delete-overlay").style.display = "none";
 }
@@ -472,8 +453,19 @@ function overlayOffDelete() {
 function overlayOnSign() {
 	document.getElementById("signup-overlay").style.display = "block";
 }
-  
+
 function overlayOffSign() {
 	document.getElementById("signup-overlay").style.display = "none";
 }
 
+function replace() {
+	let Image_Id = document.getElementById('magnify');
+	Image_Id.style="width:50%; height:50%;";
+	Image_Id.type="text";
+	Image_Id.placeholder = "Enter contact here";
+	document.getElementById("submit-magnify").innerHTML = "<button class=\"submit-mag\">Submit</button>";
+}
+
+function eraseResponse(response) {
+	document.getElementById(response).innerHTML = "";
+}
