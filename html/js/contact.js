@@ -274,12 +274,12 @@ function overlayOnUpdate(id) {
 	
 	// arr[i][0] = id, arr[i][1] = label's innerText (subject to change because I'm not sure why it isn't appearing on the site), arr[i][2] = placeholder
 	let arr = [["u-firstname", "First Name", "first name"], ["u-lastname", "Last Name", "last name"], ["u-phone", "Phone Number", "phone"],
-	["u-email", "Email Address", "email"], ["u-date", "Date", "date"]];
+	["u-email", "Email Address", "email"]];
 	let element;
 	let lab;
 	let inp;
 	document.getElementById("updateform").innerHTML = "";
-	for (let i = 0; i < header.length; i++)
+	for (let i = 0; i < header.length - 1; i++)
 	{
 		element = document.createElement('div');
 		element.className = 'form-group';
