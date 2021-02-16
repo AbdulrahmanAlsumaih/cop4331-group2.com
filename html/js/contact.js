@@ -10,9 +10,16 @@ let search = '';
 // Main function to create the table, grabs the contacts and then creates the table
 function createTable(isSearching) {
 	
-  // change the page but not really
+	// change the page but not really
 	changePage(0,isSearching);
 	
+}
+
+function changePage(change, isSearching) {
+	
+	// Figure out how many contacts there are and then update the counter
+	getContactNum(updateCounter, change, isSearching);
+
 }
 
 function getSearchResults(callback){
@@ -56,12 +63,12 @@ function getSearchResults(callback){
 				
 				// Call the callback function that draws the table
 				callback();
-		
+				
 			}
 		};
-
+		
 	} catch(err) {
-	document.getElementById("getContactResult").innerHTML = err.message;
+		document.getElementById("getContactResult").innerHTML = err.message;
 	}
 	
 }
@@ -172,23 +179,14 @@ function drawTable(){
 	
 }
 
-function changePage(change, isSearching) {
-	
-	// Figure out how many contacts there are and then update the counter
-	getContactNum(updateCounter, change, isSearching);
 
-}
-
-function getContactNum(callback, change, isSearching)
-{
+function getContactNum(callback, change, isSearching) {
 	// See if a search was being performed
-	if(isSearching == 1)
-	{
+	if(isSearching == 1) {
 		search = localStorage.getItem("search");
 		console.log("search time");
 	}
-	else
-	{
+	else {
 		search = '';
 	}
 	
@@ -201,7 +199,7 @@ function getContactNum(callback, change, isSearching)
 	jsonPayload = '';
 	
 	// add the search if possible
-	if(isSearching == 1){
+	if(isSearching == 1) {
 		jsonPayload = '{"search" : "' + search + '"}';
 	}
 	console.log("search: " + search + ", jsonPayload: " + jsonPayload);
@@ -225,9 +223,13 @@ function getContactNum(callback, change, isSearching)
 		};
 
 	} catch(err) {
-	console.log(err.message);
-	document.getElementById("getContactResult").innerHTML = err.message;
+		console.log(err.message);
+		document.getElementById("getContactResult").innerHTML = err.message;
 	}
+}
+
+function reloadTablePage() {
+	getContacts(drawTable);
 }
 
 function updateCounter(change, isSearching) {
@@ -332,7 +334,7 @@ function addContact() {
 	if (email === "") {
 		email = "-";
 	}
-	
+
 	if (phone === "") {
 		phone = "-";
 	}
