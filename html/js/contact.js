@@ -411,7 +411,6 @@ function completeUpdate()
 	}
 	document.getElementById("updateform").reset();
 	overlayOffUpdate();
-	getContacts(drawTable);
 }
 
 // All overlay functions
