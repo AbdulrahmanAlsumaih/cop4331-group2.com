@@ -386,8 +386,8 @@ function completeUpdate()
 	let last = document.getElementById("u-lastname");
 	let phone = document.getElementById("u-phone");
 	let email = document.getElementById("u-email");
-	let id = universal_id
-	let jsonPayload = '{"firstname":' + first + ', "lastname":"' + search + ', "email":"' + email + ', "phone":"' + phone + ', "id":"' + id + '"}';
+	let id = universal_id;
+	let jsonPayload = '{"firstname":' + first + ', "lastname":"' + last + ', "email":"' + email + ', "phone":"' + phone + ', "id":"' + id + '"}';
 	let url = urlBase + '/update.' + extension;
 
 	let xhr = new XMLHttpRequest();
@@ -404,7 +404,7 @@ function completeUpdate()
 				userId = jsonObject.id;
 		
 				if( userId < 1 ) {
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					document.getElementById("updateResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
 		
@@ -413,7 +413,7 @@ function completeUpdate()
 		};
 		
 	} catch(err) {
-		document.getElementById("loginResult").innerHTML = err.message;
+		document.getElementById("updateResult").innerHTML = err.message;
 	}
 	document.getElementById("updateform").reset();
 	overlayOffUpdate();
