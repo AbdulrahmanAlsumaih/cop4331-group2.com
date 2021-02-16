@@ -359,7 +359,7 @@ function addContact() {
 	
 }
 
-// Function not complete
+
 function searchContact() {
 	
 	// Store the search value
@@ -372,7 +372,28 @@ function searchContact() {
 
 // Function obv not complete
 function deleteContact() {
-	
+	let id = universal_id;
+	let jsonPayload = '{"num":"' + id + '"}';
+	let url = urlBase + '/deletecontact.' + extension;
+	console.log(jsonPayload);
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try {
+		// Sending json
+		xhr.send(jsonPayload);
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log(xhr.responseText);
+				let jsonObject = JSON.parse(xhr.responseText);
+				//window.location.href = "home.html";
+			}
+		};
+		
+	} catch(err) {
+		document.getElementById("updateResult").innerHTML = err.message;
+	}
 }
 
 function reloadPage() {
