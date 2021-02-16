@@ -163,7 +163,7 @@ function drawTable(){
 			// This line adds the pencil image and calls overlayOnUpdate() when the image is clicked. "this.id" is the images id 
 			// (example: edit32 where 32 is contact.num and becomes universal_id)
 
-			td.innerHTML = "<img id= 'edit"+ String(contact[i][5])+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
+			td.innerHTML = "<i id= 'edit"+ String(contact[i][5])+"' onclick=\"overlayOnUpdate(this.id);\" class=\"fa fa-pencil-square-o edit-button\"></i>"
 			tr.appendChild(td);
 			//tbody.appendChild(tr);
 			document.getElementById("create-table").appendChild(tr);
