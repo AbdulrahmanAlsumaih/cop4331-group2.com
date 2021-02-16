@@ -382,13 +382,42 @@ function clearAdd() {
 // This function will be called once the user hits update submit button
 function completeUpdate()
 {
-	let arr = [	document.getElementById("u-firstname"), document.getElementById("u-lastname"), document.getElementById("u-phone"), 
-	document.getElementById("u-email"), document.getElementById("u-date")];
-	for (let i = 0; i < arr.length; i++) {
-		console.log(arr[i].value);
+	let first = document.getElementById("u-firstname");
+	let last = document.getElementById("u-lastname");
+	let phone = document.getElementById("u-phone");
+	let email = document.getElementById("u-email");
+	let id = universal_id
+	let jsonPayload = '{"firstname":' + first + ', "lastname":"' + search + ', "email":"' + email + ', "phone":"' + phone + ', "id":"' + id + '"}';
+	let url = urlBase + '/update.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try {
+		// Sending json
+		xhr.send(jsonPayload);
+
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				let jsonObject = JSON.parse(xhr.responseText);
+		
+				userId = jsonObject.id;
+		
+				if( userId < 1 ) {
+					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					return;
+				}
+		
+				window.location.href = "home.html";
+			}
+		};
+		
+	} catch(err) {
+		document.getElementById("loginResult").innerHTML = err.message;
 	}
 	document.getElementById("updateform").reset();
 	overlayOffUpdate();
+	getContacts(drawTable);
 }
 
 // All overlay functions
