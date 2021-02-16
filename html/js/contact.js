@@ -372,6 +372,34 @@ function searchContact() {
 
 // Function obv not complete
 function deleteContact() {
+	let first = document.getElementById("u-firstname").value;
+	let last = document.getElementById("u-lastname").value;
+	let phone = document.getElementById("u-phone").value;
+	let email = document.getElementById("u-email").value;
+	let id = universal_id;
+	let jsonPayload = '{"firstname":"' + first + '", "lastname":"' + last + '", "email":"' + email + '", "phone":"' + phone + '", "num":"' + id + '"}';
+	let url = urlBase + '/update.' + extension;
+	console.log(jsonPayload);
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try {
+		// Sending json
+		xhr.send(jsonPayload);
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log(xhr.responseText);
+				let jsonObject = JSON.parse(xhr.responseText);
+				//window.location.href = "home.html";
+			}
+		};
+		
+	} catch(err) {
+		document.getElementById("updateResult").innerHTML = err.message;
+	}
+	document.getElementById("updateform").reset();
+	overlayOffUpdate();
 	
 }
 
