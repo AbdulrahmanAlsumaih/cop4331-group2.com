@@ -414,7 +414,7 @@ function completeUpdate()
 		document.getElementById("updateResult").innerHTML = err.message;
 	}
 	document.getElementById("updateform").reset();
-	overlayOffUpdate();
+	// overlayOffUpdate();
 }
 
 // All overlay functions
