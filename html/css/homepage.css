@@ -83,23 +83,23 @@
   padding-bottom: 50px;
 }
 
-table {
+/* table {
   border-radius: 6px;
   background-color: white;
   table-layout: fixed;
-}
+} */
 
 .table-title-text {
   color: white;
 }
 
-tr:first-child {
+/* tr:first-child {
   background-color: #ff0000;
 }
 
 tr:nth-child(odd) {
   background-color: #e3e3e3;
-}
+} */
 
 th {
   text-align: center;
