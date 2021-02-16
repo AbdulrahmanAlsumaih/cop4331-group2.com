@@ -5,7 +5,6 @@
 	// Check if user is logged in
 	if ($_SESSION['id'] == NULL)
 	{
-		error_log("here it is5");
 		returnWithError('ERROR: User must be logged in', -1);
 		exit();
 	}
@@ -15,7 +14,6 @@
 	// If there is a connection error return it
 	if ($conn->connect_error) 
 	{
-		error_log("here it is27");
 		returnWithError( $conn->error, -1 );
 		$conn->close();
 		exit();
@@ -32,8 +30,6 @@
 		else{
 			$sql = "select num,firstname,lastname,email,phone,date from contacts where id = " . $_SESSION['id'] . ";";
 		}
-		
-		error_log("here it is3");
 		
 		$result = $conn->query($sql);
 		
