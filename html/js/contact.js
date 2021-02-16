@@ -321,13 +321,13 @@ function addContact() {
 	}
 
 	if (lastName === "") {
-		lastName = "e";
+		lastName = "-";
 	}
 	if (email === "") {
-		email = "e";
+		email = "-";
 	}
 	if (phone === "") {
-		phone = "123";
+		phone = "-";
 	}
 
 	// Getting the current date and formatting it
