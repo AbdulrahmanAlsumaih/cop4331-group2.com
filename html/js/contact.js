@@ -338,6 +338,7 @@ function addContact() {
 	let date = m + '/' + d + '/' + y;
 	
 	let jsonPayload = '{"firstname" : "' + firstName + '", "lastname" : "' + lastName + '", "email" : "' + email + '", "phone" : "' + phone + '", "date" : "' + date + '"}';
+	console.log(jsonPayload);
 	let url = urlBase + '/addcontact.' + extension;
 	
 	let xhr = new XMLHttpRequest();
