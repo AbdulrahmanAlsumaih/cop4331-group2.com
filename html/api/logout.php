@@ -10,10 +10,10 @@
 
     //get rid of cookie
     setcookie("user", "", time() -3600 );
-    
+
     //clear the session variables
     session_unset();
-
+    unset($_SESSION['id']);
     //destroy session
 
     session_destroy();
