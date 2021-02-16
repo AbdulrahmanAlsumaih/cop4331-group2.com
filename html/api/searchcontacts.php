@@ -1,73 +1,97 @@
 <?php
+	$inData = getRequestInfo();
+	session_start();
+	$num = 0;
+	
+	// Check if user is logged in
+	if ($_SESSION['id'] == NULL)
+	{
+		returnWithError('ERROR: User must be logged in', -1);
+		exit();
+	}
+	// Connect to the DB
+	$conn = new mysqli("localhost", "db_user", "123", "contact_db"); 
+	
+	// If there is a connection error return it
+	if ($conn->connect_error) 
+	{
+		returnWithError( $conn->error, -1 );
+		$conn->close();
+		exit();
+	}
+	
+	else
+	{
+		// Use the page number to determine which records to get
+		$lastvalue = (intval($inData["pagenumber"]) - 1)  * 5;
+		$offset = 5;
+		
+		// Retrieve the data from the db
+		$sql = "select num,firstname,lastname,email,phone,date from contacts where id = " . $_SESSION['id'] . " AND (firstname like '" . $inData["search"] . "%' or lastname  like '" . $inData["search"] . "%' or email  like '" . $inData["search"] . "%' or phone like '" . $inData["search"] . "%' )" . " limit " . $lastvalue . "," . $offset . ";";
+		$result = $conn->query($sql);
+		
+		if( $result == NULL )
+		{
+			returnWithError($conn->error, -1 );
+			error_log("!!!!ERROR CONNECTING TO DATABASE!!!");
+			die();
+		}
+		
+		// Make sure data was returned
+		if ($result->num_rows > 0) {
+			
+			// Create the big array
+			$contacts = "{";
+			
+			// Simple variable for iteration
+			$i = 0;
+			
+			// Loop through the results
+			while($row = $result->fetch_assoc()) {
+				
+				// Create a contact
+				$contact = '{"firstname":"' . $row['firstname'] . '", "lastname":"' . $row['lastname'] . '", "email":"' . $row['email'] . '", "phone":"' . $row['phone'] . '", "date":"' . $row['date'] . '","num":"' . $row['num'] . '"}';
+				
+				// Add it to the big array
+				$contacts = $contacts . '"contact'. $i . '":' . $contact . ',' ;
+				
+				// Increment the contact number
+				$i += 1;
+			}
+			
+			// Remove the trailing comma 
+			$contacts = rtrim($contacts, ", ");
+			
+			// Add the closing bracket
+			$contacts = $contacts . "}";
+			
+			// Return with the data
+			sendResultInfoAsJson($contacts);
+			$conn->close();
+		}
+		
+		// If nothing found, return an error
+		else {
+			returnWithError("No results found", 0);
+			$conn->close();
+		}
+	}
+	
+	function getRequestInfo()
+	{
+		return json_decode(file_get_contents('php://input'), true);
+	}
 
-    $inData = getRequestInfo();
-
-    $searchResults = "";
-    $searchCount = 0;
-    
-    //gets the open session
-    session_start();
-    //if there is no previous session ERROR
-    if($_SESSION['id'] == NULL)
-    {
-        returnWithError('ERROR: User must be logged in');
-        exit();
-    }
-    // connect to the Database.
-    $conn = new mysqli("localhost", "db_user", "123", "contact_db");
-    // return error if connection fail to establish.
-    if ($conn->connect_error) 
-    {
-        returnWithError($conn->connect_error);
-        $conn->close();
-        exit();
-    }
-    else
-    {
-        $sql = "SELECT * FROM contacts where firstname  like '%" . $inData["search"] . "%' or lastname  like '%" . $inData["search"] . "%' or email  like '%" . $inData["search"] . "%' or phone  like '%" . $inData["search"] . "%'";
-        $result = $conn->query($sql);
-
-        if($result->num_rows > 0)
-        {
-            // output data of each row
-            while($row = $result->fetch_assoc()) 
-            {
-                if($searchCount > 0)
-                {
-                    $searchResults .= ",";
-                }
-                $searchCount++;
-                $searchResults .= '"' . $row["firstname"] .  '", "' . $row["lastname"] . '", "' . $row["email"] .  '", "' . $row["phone"] .  '"';
-            }
-        }
-        else
-        {
-            returnWithError("No Records Found");
-            $conn->close();
-        }
-        returnWithInfo($searchResults);
-        $conn->close();
-    }
-    
-
-    function getRequestInfo()
-    {
-    	return json_decode(file_get_contents('php://input'), true);
-    }
-    function sendResultInfoAsJson($obj)
-    {
-    	header('Content-type: application/json');
-    	echo $obj;
-    }
-    function returnWithInfo($searchResults)
-    {
-	    $retValue = '{"results":[' . $searchResults . '],"error":""}';
-	    sendResultInfoAsJson($retValue);
-    }
-    
-    function returnWithError($err)
-    {
-    	$retValue = '{"firstName":"","lastName":"","error":"' . $err . '"}';
-    	sendResultInfoAsJson($retValue);
-    }
+	function sendResultInfoAsJson( $obj )
+	{
+		header('Content-type: application/json');
+		echo $obj;
+	}
+	
+	function returnWithError( $err, $num )
+	{
+		$retValue = '{"num":"' . $num . '", "error":"' . $err . '"}';
+		sendResultInfoAsJson( $retValue );
+	}
+	
 ?>
