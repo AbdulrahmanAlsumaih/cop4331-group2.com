@@ -1,4 +1,4 @@
-let urlBase = 'http://www.cop4331-group2.com/api';
+// let urlBase = 'http://www.cop4331-group2.com/api';
 let extension = 'php';
 
 let userId = 0;
