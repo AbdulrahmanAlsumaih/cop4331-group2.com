@@ -107,13 +107,15 @@ th {
 
 tr {
   text-align: center;
+  height: 50px;
+  color: rgb(230, 230, 230);
 }
 
 .table-style {
   margin-left: auto;
   margin-right: auto;
   border-radius: 8px;
-  background-color: white;
+  background-color: #3a3a3a;
   width: 80%;
   table-layout: fixed;
   box-shadow: 0 0 15px black;
