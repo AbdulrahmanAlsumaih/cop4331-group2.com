@@ -1,12 +1,11 @@
 // let urlBase = 'http://www.cop4331-group2.com/api';
-let extension = 'php';
+// let extension = 'php';
 
 let userId = 0;
 let firstName = "";
 let lastName = "";
 
-function doSignUp()
-{
+function doSignUp() {
 	userId = 0;
 	// firstName = "";
 	// lastName = "";
@@ -65,3 +64,4 @@ function doSignUp()
 	}
 
 }
+
