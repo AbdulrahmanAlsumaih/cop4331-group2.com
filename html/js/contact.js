@@ -388,7 +388,7 @@ function completeUpdate()
 	let phone = document.getElementById("u-phone").value;
 	let email = document.getElementById("u-email").value;
 	let id = universal_id;
-	let jsonPayload = '{"firstname":"' + first + '", "lastname":"' + last + '", "email":"' + email + '", "phone":"' + phone + '", "id":"' + id + '"}';
+	let jsonPayload = '{"firstname":"' + first + '", "lastname":"' + last + '", "email":"' + email + '", "phone":"' + phone + '", "num":"' + id + '"}';
 	let url = urlBase + '/update.' + extension;
 	console.log(jsonPayload);
 

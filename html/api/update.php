@@ -21,7 +21,7 @@
     }
     else
     {
-        $sql = "UPDATE contacts SET firstname = '" . $inData['firstname'] . "', lastname = '" . $inData['lastname'] . "', email = '" . $inData['email'] . "', phone = '" . $inData['phone'] . "' WHERE id = " . $inData['id'].";";
+        $sql = "UPDATE contacts SET firstname = '" . $inData['firstname'] . "', lastname = '" . $inData['lastname'] . "', email = '" . $inData['email'] . "', phone = '" . $inData['phone'] . "' WHERE num = " . $inData['num'].";";
         if($result = $conn->query($sql) != TRUE)
         {
             returnWithError( $conn->error);
