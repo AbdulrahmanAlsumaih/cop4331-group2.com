@@ -320,6 +320,16 @@ function addContact() {
 		return;
 	}
 
+	if (lastName === "") {
+		lastName = "-";
+	}
+	if (email === "") {
+		email = "-";
+	}
+	if (phone === "") {
+		phone = "-";
+	}
+
 	// Getting the current date and formatting it
 	let today = new Date();
 	let d = today.getDate();
