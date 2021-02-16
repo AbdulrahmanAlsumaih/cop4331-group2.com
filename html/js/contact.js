@@ -145,8 +145,8 @@ function drawTable(){
 	// Otherwise make the contacts table
 	else
 	{
-		tbody = document.createElement('tbody');
-		document.getElementById("create-table").appendChild(tbody);
+		// tbody = document.createElement('tbody');
+		// document.getElementById("create-table").appendChild(tbody);
 
 		
 		for (let i = 0; i < contact.length; i++) {
@@ -165,9 +165,9 @@ function drawTable(){
 
 			td.innerHTML = "<img id= 'edit"+ String(contact[i][5])+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
 			tr.appendChild(td);
-			tbody.appendChild(tr);
+			//tbody.appendChild(tr);
+			document.getElementById("create-table").appendChild(tr);
 		}
-		document.getElementById("create-table").appendChild(tbody);
 	}
 	
 }
