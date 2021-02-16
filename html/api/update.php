@@ -1,4 +1,4 @@
-<?
+<?php
     $inData = getRequestInfo();
 	
     //gets the open session
