@@ -34,7 +34,7 @@
 		}
 		
 		// Insert the new contact record into the database
-		$sql = "insert into contacts (num,id,firstname,lastname,email,phone,date) VALUES (" . $num . "," . $_SESSION['id'] . ",'" . $inData['firstname'] . "','" . $inData['lastname'] . "','" . $inData['email'] . "'," . $inData['phone'] . "," . $inData['date'] . ")";
+		$sql = "insert into contacts (num,id,firstname,lastname,email,phone,date) VALUES (" . $num . "," . $_SESSION['id'] . ",'" . $inData['firstname'] . "','" . $inData['lastname'] . "','" . $inData['email'] . "','" . $inData['phone'] . "','" . $inData['date'] . "')";
 		if( $result = $conn->query($sql) != TRUE )
 		{
 			returnWithError( $conn->error, -1 );
