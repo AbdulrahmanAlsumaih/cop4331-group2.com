@@ -390,6 +390,7 @@ function completeUpdate()
 	let id = universal_id;
 	let jsonPayload = '{"firstname":"' + first + '", "lastname":"' + last + '", "email":"' + email + '", "phone":"' + phone + '", "id":"' + id + '"}';
 	let url = urlBase + '/update.' + extension;
+	console.log(jsonPayload);
 
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
