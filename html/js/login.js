@@ -11,12 +11,12 @@ function doLogin() {
 	// Getting data from the html IDs
 	let login = document.getElementById("loginEmail").value;
 	let password = document.getElementById("loginPassword").value;
-	//let hash = md5(password); // Hashing password
+	let hash = md5(password); // Hashing password
 	
 	document.getElementById("loginResult").innerHTML = "";
 
 	// Creating the jsonPayload
-	let jsonPayload = '{"email" : "' + login + '", "pass" : "' + password + '"}';
+	let jsonPayload = '{"email" : "' + login + '", "pass" : "' + hash + '"}';
 	let url = urlBase + '/login.' + extension;
 
 	let xhr = new XMLHttpRequest();
@@ -57,34 +57,32 @@ function doLogout() {
 }
 
 function doSignUp() {
-	//userId = 0;
-	// firstName = "";
-	// lastName = "";
 	
 	// Getting data from the html IDs
 	let signupEmail = document.getElementById("signupEmail").value;
 	let password = document.getElementById("signupPassword").value;
-	//let hash = md5(password); // Hashing password
 	
     document.getElementById("signupResult").innerHTML = "";
     
     if (signupEmail == "" && signupPassword == "") {
-        document.getElementById("signupResult").innerHTML = "Please enter an email/password";
+		document.getElementById("signupResult").innerHTML = "Please enter an email/password";
         return;
     }
-
+	
     if (signupEmail == "") {
-        document.getElementById("signupResult").innerHTML = "Please enter an email address";
+		document.getElementById("signupResult").innerHTML = "Please enter an email address";
         return;
     }
-
+	
     if (signupPassword == "") {
-        document.getElementById("signupResult").innerHTML = "Please enter a password";
+		document.getElementById("signupResult").innerHTML = "Please enter a password";
         return;
     }
 
+	let hash = md5(password); // Hashing password
+	
 	// Creating the jsonPayload
-	let jsonPayload = '{"email" : "' + signupEmail + '", "pass" : "' + password + '"}';
+	let jsonPayload = '{"email" : "' + signupEmail + '", "pass" : "' + hash + '"}';
 	let url = urlBase + '/newuser.' + extension;
 
 	let xhr = new XMLHttpRequest();
