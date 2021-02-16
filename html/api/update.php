@@ -16,7 +16,7 @@
     if($conn->connect_error)
     {
         returnWithError($conn->error);
-		error_log($conn->error);
+		error_log("!!!!!!!!!!!!!!!!!!!!!BIG ERROR !!!!!!!!!!!!!!!!!!! " . $conn->error);
         exit();
     }
     else
@@ -25,8 +25,9 @@
         if($result = $conn->query($sql) != TRUE)
         {
             returnWithError( $conn->error);
-			error_log($conn->error);
+			error_log("!!!!!!!!!!!!!!!!!!!!!BIG ERROR !!!!!!!!!!!!!!!!!!! " . $conn->error);
         }
+		returnWithError(0);
         $conn->close();
     }
 
