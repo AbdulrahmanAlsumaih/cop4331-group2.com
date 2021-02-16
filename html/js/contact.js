@@ -320,12 +320,19 @@ function addContact() {
 		return;
 	}
 
+	if (phone.length > 10) {
+		document.getElementById("addContactResult").innerHTML = "Phone number is too long.";
+		return;
+	}
+
 	if (lastName === "") {
 		lastName = "-";
 	}
+
 	if (email === "") {
 		email = "-";
 	}
+	
 	if (phone === "") {
 		phone = "-";
 	}
