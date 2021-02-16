@@ -51,7 +51,8 @@ function doLogin() {
 function doLogout() {
 	let url = urlBase + '/logout.' + extension;
 	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
+	xhr.open("GET", url, true);
+	xhr.send();
 	window.location.href = "index.html";
 }
 
