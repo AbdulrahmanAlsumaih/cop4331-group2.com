@@ -327,7 +327,7 @@ function addContact() {
 		email = "e";
 	}
 	if (phone === "") {
-		phone = "e";
+		phone = "123";
 	}
 
 	// Getting the current date and formatting it
