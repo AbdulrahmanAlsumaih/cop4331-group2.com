@@ -166,8 +166,8 @@ function drawTable(){
 			td.innerHTML = "<img id= 'edit"+ String(contact[i][5])+"' src=\"img/edit.png\" onclick=\"overlayOnUpdate(this.id);\" class=\"edit-button\">"
 			tr.appendChild(td);
 			tbody.appendChild(tr);
-			document.getElementById("create-table").appendChild(tr);
 		}
+		document.getElementById("create-table").appendChild(tbody);
 	}
 	
 }
