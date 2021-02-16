@@ -54,7 +54,7 @@
       </div>
 
       <div id="add-overlay" class="overlay">
-        <button type="button" class="close-btn" onclick="overlayOffAdd(); clearAdd();"><i class="fa fa-window-close"></i></button>
+        <button type="button" class="close-btn" onclick="overlayOffAdd(); clearAdd(); reloadPage();"><i class="fa fa-window-close"></i></button>
         <div class="container pad">
           <div class="row justify-content-center">
             <div class="col-md-8">
@@ -93,7 +93,7 @@
       </div>
 
       <div id="update-overlay" class="overlay" >
-        <button type="button" class="close-btn" onclick="overlayOffUpdate();"><i class="fa fa-window-close"></i></button>
+        <button type="button" class="close-btn" onclick="overlayOffUpdate(); reloadPage();"><i class="fa fa-window-close"></i></button>
         <div class="container pad">
           <div class="row justify-content-center">
             <div class="col-md-8">
@@ -105,7 +105,7 @@
             </div>
           </div>
           <div class="row justify-content-center pad-top">
-            <button type="submit" class="add-btn btn-mgn" onclick="overlayOffUpdate(); completeUpdate();">
+            <button type="submit" class="add-btn btn-mgn" onclick="completeUpdate();">
               Confirm <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </button>
             <button class="del-btn btn-mgn" onclick="overlayOnDelete();">

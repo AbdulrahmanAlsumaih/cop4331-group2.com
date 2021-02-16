@@ -375,6 +375,10 @@ function deleteContact() {
 	
 }
 
+function reloadPage() {
+	location.reload();
+}
+
 // Clears the form upon clicking the close button
 function clearAdd() {
 	document.getElementById("addform").reset();
