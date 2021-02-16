@@ -16,7 +16,8 @@
     if($conn->connect_error)
     {
         returnWithError($conn->error);
-		error_log($conn->error)
+		error_log($conn->error);
+		conn->close();
         exit();
     }
     else
