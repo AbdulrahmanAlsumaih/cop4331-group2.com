@@ -400,14 +400,6 @@ function completeUpdate()
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse(xhr.responseText);
-		
-				userId = jsonObject.id;
-		
-				if( userId < 1 ) {
-					document.getElementById("updateResult").innerHTML = "User/Password combination incorrect";
-					return;
-				}
-		
 				window.location.href = "home.html";
 			}
 		};

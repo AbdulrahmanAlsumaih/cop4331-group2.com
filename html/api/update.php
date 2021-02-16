@@ -15,6 +15,7 @@
     if($conn->connect_error)
     {
         returnWithError($conn->error);
+		error_log($conn->error)
         $conn->close();
         exit();
     }
@@ -24,6 +25,7 @@
         if($result = $conn->query($sql) != TRUE)
         {
             returnWithError( $conn->error);
+			error_log($conn->error)
         }
         $conn->close();
     }
