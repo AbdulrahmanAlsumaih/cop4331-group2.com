@@ -64,7 +64,7 @@ function doSignUp() {
 	
     document.getElementById("signupResult").innerHTML = "";
     
-    if (signupEmail == "" && signupPassword == "") {
+    if (signupEmail == "" && password == "") {
 		document.getElementById("signupResult").innerHTML = "Please enter an email/password";
         return;
     }
@@ -74,7 +74,7 @@ function doSignUp() {
         return;
     }
 	
-    if (signupPassword == "") {
+    if (password == "") {
 		document.getElementById("signupResult").innerHTML = "Please enter a password";
         return;
     }
