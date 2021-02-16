@@ -427,6 +427,7 @@ function completeUpdate()
 			if (this.readyState == 4 && this.status == 200) {
 				console.log(xhr.responseText);
 				let jsonObject = JSON.parse(xhr.responseText);
+				document.getElementById("updateResult").innerHTML = "Contact Updated!";
 				//window.location.href = "home.html";
 			}
 		};
