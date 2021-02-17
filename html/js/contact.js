@@ -390,6 +390,9 @@ function searchContact() {
 	// Change isSearching
 	isSearching = 1;
 	
+	// Reset the counter
+	counter = 1;
+	
 	// Reload table
 	createTable();
 }
