@@ -15,6 +15,7 @@ function clearTable() {
 	// Reset search variables
 	isSearching = 0;
 	search = "";
+	counter = 1;
 	
 }
 
