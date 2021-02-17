@@ -74,6 +74,7 @@ function getSearchResults(callback){
 				}
 				
 				// Call the callback function that draws the table
+				console.log(contact);
 				callback();
 				
 			}
