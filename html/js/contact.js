@@ -14,7 +14,8 @@ function clearTable() {
 	
 	// Reset search variables
 	isSearching = 0;
-	search = '';
+	search = "";
+	
 }
 
 // Main function to create the table, grabs the contacts and then creates the table
