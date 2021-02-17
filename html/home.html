@@ -41,7 +41,7 @@
             <i class="fa fa-search"></i>
           </button>
         </div>
-        <button type="button" class="add-open-btn" onclick="createTable(0);">Show All</button>
+        <button type="button" class="add-open-btn" onclick="createTable(); cleartable;">Show All</button>
         <button type="button" class="add-open-btn" onclick="overlayOnAdd();">Add Contact</button>
       </div>
       <div class="row justify-content-center table-responsive">
@@ -57,8 +57,8 @@
         </table>
       </div>
       <div class="row justify-content-center pad">
-        <button class="prev-btn" onclick="changePage(-1,0)"><i class="fa fa-arrow-left"></i> Prev</button>
-        <button class="next-btn" onclick="changePage(1,0)">Next <i class="fa fa-arrow-right"></i></button>
+        <button class="prev-btn" onclick="changePage(-1)"><i class="fa fa-arrow-left"></i> Prev</button>
+        <button class="next-btn" onclick="changePage(1)">Next <i class="fa fa-arrow-right"></i></button>
       </div>
     </div>
 

@@ -6,19 +6,29 @@ let num_pages = 1;
 // universal_id is equivalent to contact.num
 let universal_id;
 let search = '';
+let isSearching = 1;
+
+
+// Function to reset back to default
+function clearTable() {
+	
+	// Reset search variables
+	isSearching = 0;
+	search = '';
+
 
 // Main function to create the table, grabs the contacts and then creates the table
-function createTable(isSearching) {
+function createTable() {
 	
 	// change the page but not really
-	changePage(0,isSearching);
+	changePage(0);
 	
 }
 
-function changePage(change, isSearching) {
+function changePage(change) {
 	
 	// Figure out how many contacts there are and then update the counter
-	getContactNum(updateCounter, change, isSearching);
+	getContactNum(updateCounter, change);
 
 }
 
@@ -180,7 +190,7 @@ function drawTable(){
 }
 
 
-function getContactNum(callback, change, isSearching) {
+function getContactNum(callback, change) {
 	// See if a search was being performed
 	if(isSearching == 1) {
 		search = localStorage.getItem("search");
@@ -217,7 +227,7 @@ function getContactNum(callback, change, isSearching) {
 				
 				// Grab the number of contacts and use that to calculate the number of pages
 				num_pages = Math.ceil(jsonObject['num'] / contacts_per_page);
-				callback(change, isSearching);
+				callback(change);
 		
 			}
 		};
@@ -232,7 +242,7 @@ function reloadTablePage() {
 	getContacts(drawTable);
 }
 
-function updateCounter(change, isSearching) {
+function updateCounter(change) {
 	
 	// Update the counter
 	if (change == 1) {
@@ -375,8 +385,11 @@ function searchContact() {
 	var search = document.getElementById('search').value;
 	localStorage.setItem("search", search);
 	
-	// Redirect to search result page
-	window.location.href = "search.html";
+	// Change isSearching
+	isSearching = 1;
+	
+	// Reload table
+	createTable();
 }
 
 // Function obv not complete
