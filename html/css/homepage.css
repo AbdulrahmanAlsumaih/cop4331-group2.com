@@ -100,6 +100,7 @@ table {
 
 .table-title-text {
   color: white;
+  font-size: large;
 }
 
 tr:first-child {
@@ -117,7 +118,6 @@ th {
 tr {
   text-align: center;
   height: 50px;
-  color: rgb(230, 230, 230);
 }
 
 .table-style {
