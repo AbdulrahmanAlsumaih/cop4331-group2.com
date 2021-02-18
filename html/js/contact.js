@@ -445,33 +445,6 @@ function completeUpdate()
 	let url = urlBase + '/update.' + extension;
 	console.log(jsonPayload);
 
-	// Error checking for phone number
-	if (phone !== "-" && isNaN(phone)) {
-		document.getElementById("updateResult").innerHTML = "Please enter a valid phone number.";
-		return;
-	}
-
-	if (phone.length > 10) {
-		document.getElementById("updateResult").innerHTML = "Phone number is too long.";
-		return;
-	}
-
-	if (first === "") {
-		first = "-";
-	}
-
-	if (last === "") {
-		last = "-";
-	}
-
-	if (email === "") {
-		email = "-";
-	}
-
-	if (phone === "") {
-		phone = "-";
-	}
-
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
