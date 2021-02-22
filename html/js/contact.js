@@ -242,7 +242,7 @@ function getContactNum(callback, change) {
 }
 
 function reloadTablePage() {
-	changePage(0);
+	getContacts(drawTable);
 }
 
 function updateCounter(change) {
